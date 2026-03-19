@@ -1,0 +1,528 @@
+squad,lake,id_historia,numero,titulo,papel,recurso,duracao_dias_uteis,data_inicio,data_fim
+Squad 1,BMC,[BMC - 1],1,Entidade: BMC - Tamanho M,Dev Fullstack,Dev 1,21.0,09/03/2026,06/04/2026
+Squad 1,COMPRAS,[COMPRAS - 1],1,Entidade: Datamart Tratativa - Parte 1 (Dimensões Básicas 1-4) - TAMANHO: G,Dev Fullstack,Dev 2,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 2],2,Entidade: Datamart Tratativa - Parte 2 (Dimensões Básicas 5-8) - TAMANHO: G,Dev Fullstack,Dev 3,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 3],3,Entidade: Datamart Tratativa - Parte 3 (Fornecedores e Materiais) - TAMANHO: G,Dev Fullstack,Dev 4,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 4],4,Entidade: Datamart Tratativa - Parte 4 (Documentos de Compra) - TAMANHO: G,Dev Fullstack,Dev 5,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 5],5,"Entidade: Datamart Tratativa - Parte 5 (Curva de Compra Base - Curva, Histórico e Causais) - TAMANHO: G",Dev Fullstack,Dev 6,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 6],6,Entidade: Datamart Tratativa - Parte 6 (Curva de Compra Mensal e Despivotada) - TAMANHO: M,Dev Fullstack,Dev 7,6.0,09/03/2026,16/03/2026
+Squad 1,COMPRAS,[COMPRAS - 7],7,Entidade: Datamart Tratativa - Parte 7 (Variação e Programação) - TAMANHO: G,Dev Fullstack,Dev 8,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 8],8,Entidade: Datamart Tratativa - Parte 8 (APV - Análise Preço Volume) - TAMANHO: G,Dev Fullstack,Dev 9,10.0,09/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 9],9,Entidade: RDA (Requisição de Autorização) - TAMANHO: G,Dev Fullstack,Dev 10,7.0,09/03/2026,17/03/2026
+Squad 1,COMPRAS,[COMPRAS - 10],10,Entidade: Estrutura Veicular - TAMANHO: P,Dev Fullstack,Dev 7,2.0,17/03/2026,18/03/2026
+Squad 1,COMPRAS,[COMPRAS - 11],11,Entidade: Flow Causais (MySQL) - TAMANHO: M,Dev Fullstack,Dev 10,6.0,18/03/2026,25/03/2026
+Squad 1,COMPRAS,[COMPRAS - 12],12,Entidade: Integração TM1 (IBM Planning Analytics) - TAMANHO: P,Dev Fullstack,Dev 7,2.0,19/03/2026,20/03/2026
+Squad 1,COMPRAS,[COMPRAS - 13],13,Entidade: Integração Power BI (Material Indireto) - TAMANHO: G,Dev Fullstack,Dev 2,8.0,23/03/2026,01/04/2026
+Squad 2,MOPAR,[MOPAR - 1],1,Assunto: AgendamentoOnline - TAMANHO: G,Dev Fullstack,Dev 1,10.0,23/03/2026,03/04/2026
+Squad 2,MOPAR,[MOPAR - 2],2,Assunto: Bonus - TAMANHO: G,Dev Fullstack,Dev 2,9.0,01/04/2026,13/04/2026
+Squad 2,MOPAR,[MOPAR - 3],3,Assunto: Claim Master - TAMANHO: M,Dev Fullstack,Dev 3,6.0,01/04/2026,08/04/2026
+Squad 2,MOPAR,[MOPAR - 4],4,Assunto: Comissionamento DFS - TAMANHO: G,Dev Fullstack,Dev 4,10.0,01/04/2026,14/04/2026
+Squad 2,MOPAR,[MOPAR - 5],5,Assunto: CSPS - TAMANHO: G,Dev Fullstack,Dev 5,7.0,01/04/2026,09/04/2026
+Squad 2,MOPAR,[MOPAR - 6],6,Assunto: CSPS - TAMANHO: G,Dev Fullstack,Dev 6,10.0,01/04/2026,14/04/2026
+Squad 2,MOPAR,[MOPAR - 7],7,Assunto: Mopar Results - TAMANHO: M,Dev Fullstack,Dev 7,8.0,01/04/2026,10/04/2026
+Squad 2,MOPAR,[MOPAR - 8],8,Assunto: NDC - Parte 1 (Tabelas 1-4) - TAMANHO: G,Dev Fullstack,Dev 8,9.0,01/04/2026,13/04/2026
+Squad 2,MOPAR,[MOPAR - 9],9,Assunto: NDC - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 9,9.0,01/04/2026,13/04/2026
+Squad 2,MOPAR,[MOPAR - 10],10,Assunto: NDC - Parte 3 - TAMANHO: M,Dev Fullstack,Dev 10,6.0,01/04/2026,08/04/2026
+Squad 2,MOPAR,[MOPAR - 11],11,Assunto: SCP - Parte 1 (Garantia SG e Item) - TAMANHO: M,Dev Fullstack,Dev 1,6.0,06/04/2026,13/04/2026
+Squad 2,MOPAR,[MOPAR - 12],12,Assunto: SCP - Parte 2 (Operação e Peça) - TAMANHO: M,Dev Fullstack,Dev 3,6.0,09/04/2026,16/04/2026
+Squad 2,MOPAR,[MOPAR - 13],13,Assunto: SCP - Parte 3 (Débitos) - TAMANHO: M,Dev Fullstack,Dev 10,6.0,09/04/2026,16/04/2026
+Squad 2,MOPAR,[MOPAR - 14],14,Assunto: Sell IN xF e xP - TAMANHO: G,Dev Fullstack,Dev 5,10.0,10/04/2026,23/04/2026
+Squad 2,MOPAR,[MOPAR - 15],15,Assunto: SELL OUT xF e xP - TAMANHO: G,Dev Fullstack,Dev 7,10.0,13/04/2026,24/04/2026
+Squad 2,MOPAR,[MOPAR - 16],16,Assunto: Veiculo Conectado - TAMANHO: G,Dev Fullstack,Dev 1,8.0,14/04/2026,23/04/2026
+Squad 2,MOPAR,[MOPAR - 17],17,Assunto: Ingestão Staging - SG Liquidadas e Estornadas - TAMANHO: M,Dev Fullstack,Dev 2,4.0,14/04/2026,17/04/2026
+Squad 2,MOPAR,[MOPAR - 18],18,Assunto: Ingestão Staging - Claims e Erros SG - TAMANHO: P,Dev Fullstack,Dev 8,2.0,14/04/2026,15/04/2026
+Squad 2,MOPAR,[MOPAR - 19],19,Assunto: Ingestão Staging - User Parameters Flow API - TAMANHO: G,Dev Fullstack,Dev 9,8.0,14/04/2026,23/04/2026
+Squad 2,MOPAR,[MOPAR - 20],20,"Assunto: Ingestão Staging - IRPV, Red Dealers e Devoluções - TAMANHO: M",Dev Fullstack,Dev 4,6.0,15/04/2026,22/04/2026
+Squad 2,MOPAR,[MOPAR - 21],21,Assunto: Ingestão Staging - Carga Fria e RAM - TAMANHO: P,Dev Fullstack,Dev 6,2.0,15/04/2026,16/04/2026
+Squad 2,MOPAR,[MOPAR - 22],22,Assunto: SG Liquidadas - Principal e Itens - TAMANHO: G,Dev Fullstack,Dev 8,10.0,16/04/2026,29/04/2026
+Squad 2,MOPAR,[MOPAR - 23],23,"Assunto: SG Liquidadas - Operações, Desenhos e Cubo - TAMANHO: G",Dev Fullstack,Dev 3,7.0,17/04/2026,27/04/2026
+Squad 2,MOPAR,[MOPAR - 24],24,Assunto: Claims GCS - TAMANHO: P,Dev Fullstack,Dev 6,2.0,17/04/2026,20/04/2026
+Squad 2,MOPAR,[MOPAR - 25],25,Assunto: Erros SG - TAMANHO: P,Dev Fullstack,Dev 10,2.0,17/04/2026,20/04/2026
+Squad 2,MOPAR,[MOPAR - 26],26,"Assunto: User Parameters - Tipos, Anomalias, Estorno, Budget - TAMANHO: G",Dev Fullstack,Dev 2,8.0,20/04/2026,29/04/2026
+Squad 2,MOPAR,[MOPAR - 27],27,"Assunto: User Parameters - Grupos, Local, Operações, Tesis - TAMANHO: M",Dev Fullstack,Dev 6,4.0,21/04/2026,24/04/2026
+Squad 2,MOPAR,[MOPAR - 28],28,Assunto: Garantia Revisões DataStage - TAMANHO: P,Dev Fullstack,Dev 10,2.0,21/04/2026,22/04/2026
+Squad 2,MOPAR,[MOPAR - 29],29,Assunto: IRPV MySQL - TAMANHO: M,Dev Fullstack,Dev 4,6.0,23/04/2026,30/04/2026
+Squad 2,MOPAR,[MOPAR - 30],30,Assunto: IRPV2 Consolidação - TAMANHO: P,Dev Fullstack,Dev 10,2.0,23/04/2026,24/04/2026
+Squad 2,MOPAR,[MOPAR - 31],31,Assunto: Red Dealers - TAMANHO: M,Dev Fullstack,Dev 1,4.0,24/04/2026,29/04/2026
+Squad 2,MOPAR,[MOPAR - 32],32,Assunto: Click - Parte 1 (Armazém e Estoque) - TAMANHO: G,Dev Fullstack,Dev 5,10.0,24/04/2026,07/05/2026
+Squad 2,MOPAR,[MOPAR - 33],33,"Assunto: Click - Parte 2 (Pedidos, Notas e Faturamento) - TAMANHO: G",Dev Fullstack,Dev 9,10.0,24/04/2026,07/05/2026
+Squad 2,MOPAR,[MOPAR - 34],34,"Assunto: Click - Parte 3 (Transporte, Viagens e Volumes) - TAMANHO: G",Dev Fullstack,Dev 6,10.0,27/04/2026,08/05/2026
+Squad 2,MOPAR,[MOPAR - 35],35,Assunto: Click - Parte 4 (Produtos e Estatísticas) - TAMANHO: G,Dev Fullstack,Dev 7,8.0,27/04/2026,06/05/2026
+Squad 2,MOPAR,[MOPAR - 36],36,Assunto: Click - Parte 5 (Produtos e Estatísticas) - TAMANHO: G,Dev Fullstack,Dev 10,8.0,27/04/2026,06/05/2026
+Squad 2,MOPAR,[MOPAR - 37],37,Assunto: Click - Parte 5 (Produtos e Estatísticas) - TAMANHO: G,Dev Fullstack,Dev 3,9.0,28/04/2026,08/05/2026
+Squad 2,MOPAR,[MOPAR - 38],38,Assunto: Click - Parte 6 - TAMANHO: M,Dev Fullstack,Dev 1,6.0,30/04/2026,07/05/2026
+Squad 2,MOPAR,[MOPAR - 39],39,Assunto: Click - Parte 6 - TAMANHO: P,Dev Fullstack,Dev 2,3.0,30/04/2026,04/05/2026
+Squad 3,CLIENTE,[CLIENTE - 1],1,Assunto: Salesforce CDC - Staging (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 1,10.0,23/03/2026,03/04/2026
+Squad 3,CLIENTE,[CLIENTE - 2],2,Assunto: CRM e Audiência (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 2,8.0,01/04/2026,10/04/2026
+Squad 3,CLIENTE,[CLIENTE - 3],3,Assunto: Campanhas Marketing Cloud (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 3,10.0,01/04/2026,14/04/2026
+Squad 3,CLIENTE,[CLIENTE - 4],4,Assunto: Campanhas Marketing Cloud (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 4,10.0,01/04/2026,14/04/2026
+Squad 3,CLIENTE,[CLIENTE - 5],5,Assunto: Marketing Cloud - Target & Views (Parte 3) - TAMANHO: G,Dev Fullstack,Dev 5,9.0,01/04/2026,13/04/2026
+Squad 3,CLIENTE,[CLIENTE - 6],6,Assunto: Dados Públicos CNPJ - Staging (Parte 1) - TAMANHO: M,Dev Fullstack,Dev 6,7.0,01/04/2026,09/04/2026
+Squad 3,CLIENTE,[CLIENTE - 7],7,Assunto: Dados Públicos CNPJ - Target & Views (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 7,6.0,01/04/2026,08/04/2026
+Squad 3,CLIENTE,[CLIENTE - 8],8,Assunto: Staging (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 8,10.0,01/04/2026,14/04/2026
+Squad 3,CLIENTE,[CLIENTE - 9],9,Assunto: Staging (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 9,7.0,01/04/2026,09/04/2026
+Squad 3,CLIENTE,[CLIENTE - 10],10,Assunto: Integrações Externas (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 10,10.0,01/04/2026,14/04/2026
+Squad 3,CLIENTE,[CLIENTE - 11],11,Assunto: Integrações Externas (Parte 2) - TAMANHO: P,Dev Fullstack,Dev 1,3.0,06/04/2026,08/04/2026
+Squad 3,CLIENTE,[CLIENTE - 12],12,Assunto: Relacionamento Cliente (Parte 1) - TAMANHO: M,Dev Fullstack,Dev 1,6.0,09/04/2026,16/04/2026
+Squad 3,CLIENTE,[CLIENTE - 13],13,Assunto: Relacionamento Cliente (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 7,10.0,09/04/2026,22/04/2026
+Squad 3,CLIENTE,[CLIENTE - 14],14,Assunto: Relacionamento Cliente (Parte 3) - TAMANHO: M,Dev Fullstack,Dev 6,7.0,10/04/2026,20/04/2026
+Squad 3,CLIENTE,[CLIENTE - 15],15,Assunto: Serviços Financeiros (Parte 1) - TAMANHO: M,Dev Fullstack,Dev 9,6.0,10/04/2026,17/04/2026
+Squad 3,CLIENTE,[CLIENTE - 16],16,Assunto: Golden Cliente (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 2,10.0,13/04/2026,24/04/2026
+Squad 3,CLIENTE,[CLIENTE - 17],17,Assunto: Golden Cliente (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 5,10.0,14/04/2026,27/04/2026
+Squad 3,CLIENTE,[CLIENTE - 18],18,Assunto: Golden Cliente (Parte 3) - TAMANHO: G,Dev Fullstack,Dev 3,10.0,15/04/2026,28/04/2026
+Squad 3,CLIENTE,[CLIENTE - 19],19,Assunto: Golden Cliente (Parte 4) - TAMANHO: G,Dev Fullstack,Dev 4,10.0,15/04/2026,28/04/2026
+Squad 3,CLIENTE,[CLIENTE - 20],20,Assunto: Golden Cliente (Parte 5) - TAMANHO: M,Dev Fullstack,Dev 8,4.0,15/04/2026,20/04/2026
+Squad 3,CLIENTE,[CLIENTE - 21],21,Assunto: Privacidade LGPD (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 10,7.0,15/04/2026,23/04/2026
+Squad 3,CLIENTE,[CLIENTE - 22],22,Assunto: Qualidade e Validação (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 1,9.0,17/04/2026,29/04/2026
+Squad 3,CLIENTE,[CLIENTE - 23],23,Assunto: Qualidade e Validação (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 9,8.0,20/04/2026,29/04/2026
+Squad 3,CLIENTE,[CLIENTE - 24],24,Assunto: Hub Cart e Hub User (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 6,9.0,21/04/2026,01/05/2026
+Squad 3,CLIENTE,[CLIENTE - 25],25,Assunto: Hub Cart e Hub User (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 8,10.0,21/04/2026,04/05/2026
+Squad 3,CLIENTE,[CLIENTE - 26],26,Assunto: Hub Cart e Hub User (Parte 3) - TAMANHO: G,Dev Fullstack,Dev 7,10.0,23/04/2026,06/05/2026
+Squad 3,CLIENTE,[CLIENTE - 27],27,Assunto: Hub Cart e Hub User (Parte 4) - TAMANHO: G,Dev Fullstack,Dev 10,10.0,24/04/2026,07/05/2026
+Squad 3,CLIENTE,[CLIENTE - 28],28,Assunto: Hub Cart e Hub User (Parte 5) - TAMANHO: G,Dev Fullstack,Dev 2,9.0,27/04/2026,07/05/2026
+Squad 3,CLIENTE,[CLIENTE - 29],29,Assunto: Visão 360 (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 5,6.0,28/04/2026,05/05/2026
+Squad 3,CLIENTE,[CLIENTE - 30],30,Assunto: Visão 360 (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 3,10.0,29/04/2026,12/05/2026
+Squad 3,CLIENTE,[CLIENTE - 31],31,Assunto: Visão 360 (Parte 3) - TAMANHO: P,Dev Fullstack,Dev 4,6.0,29/04/2026,06/05/2026
+Squad 3,CLIENTE,[CLIENTE - 32],32,Assunto: EDI - Envio CCDB (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 1,7.0,30/04/2026,08/05/2026
+Squad 3,CLIENTE,[CLIENTE - 33],33,Assunto: EDI - Envio CCDB (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 9,7.0,30/04/2026,08/05/2026
+Squad 3,CLIENTE,[CLIENTE - 34],34,Assunto: API - Carga Diária e Integrações - TAMANHO: G,Dev Fullstack,Dev 6,10.0,04/05/2026,15/05/2026
+Squad 3,CLIENTE,[CLIENTE - 35],35,Assunto: EDI - Staging Salesforce e Venda Direta (Parte 1) - TAMANHO: P,Dev Fullstack,Dev 8,2.0,05/05/2026,06/05/2026
+Squad 3,CLIENTE,[CLIENTE - 36],36,Assunto: EDI - SSH/FTP On-Premise (Parte 2) - TAMANHO: G,Dev Fullstack,Dev 5,10.0,06/05/2026,19/05/2026
+Squad 3,CLIENTE,[CLIENTE - 37],37,Assunto: EDI - SSH/FTP On-Premise (Parte 3) - TAMANHO: G,Dev Fullstack,Dev 4,7.0,07/05/2026,15/05/2026
+Squad 3,CLIENTE,[CLIENTE - 38],38,Assunto: Marketing Cloud - Target & Views (Parte 4) - TAMANHO: P,Dev Fullstack,Dev 7,2.0,07/05/2026,08/05/2026
+Squad 3,CLIENTE,[CLIENTE - 39],39,Assunto: Dados Públicos CNPJ - Staging (Parte 3) - TAMANHO: M,Dev Fullstack,Dev 8,4.0,07/05/2026,12/05/2026
+Squad 3,CLIENTE,[CLIENTE - 40],40,Assunto: Dados Públicos CNPJ - Target & Views (Parte 4) - TAMANHO: P,Dev Fullstack,Dev 2,1.0,08/05/2026,08/05/2026
+Squad 3,CLIENTE,[CLIENTE - 41],41,Assunto: Relacionamento Cliente (Parte 4) - TAMANHO: M,Dev Fullstack,Dev 10,3.0,08/05/2026,12/05/2026
+Squad 3,CLIENTE,[CLIENTE - 42],42,Assunto: Hub Cart e Hub User (Parte 6) - TAMANHO: P,Dev Fullstack,Dev 1,1.0,11/05/2026,11/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 1],1,Entidade: Rubi - Empresas e Filiais - Parte 1 (Cadastros Principais) - TAMANHO: G,Dev Fullstack,Dev 1,10.0,23/03/2026,03/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 2],2,Entidade: Rubi - Calendário e Feriados - TAMANHO: P,Dev Fullstack,Dev 2,2.0,01/04/2026,02/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 3],3,Entidade: Rubi - Escalas e Eventos de Folha - TAMANHO: G,Dev Fullstack,Dev 3,8.0,01/04/2026,10/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 4],4,Entidade: Rubi - Situações e Sindicatos - TAMANHO: G,Dev Fullstack,Dev 4,7.0,01/04/2026,09/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 5],5,Entidade: Rubi - Estrutura Organizacional (Organograma) - TAMANHO: G,Dev Fullstack,Dev 5,9.0,01/04/2026,13/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 6],6,"Entidade: Rubi - Postos de Trabalho, Centros de Custo e Deficiências - TAMANHO: G",Dev Fullstack,Dev 6,8.0,01/04/2026,10/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 7],7,"Entidade: Rubi - Cadastros de Grau de Instrução, Vínculos e Nacionalidades - TAMANHO: G",Dev Fullstack,Dev 7,9.0,01/04/2026,13/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 8],8,Entidade: Rubi - Cargos e CBO (Classificação Brasileira de Ocupações) - TAMANHO: M,Dev Fullstack,Dev 8,4.0,01/04/2026,06/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 9],9,Entidade: Rubi - FPAS e Terceiros (Previdência Social) - TAMANHO: G,Dev Fullstack,Dev 9,5.0,01/04/2026,07/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 10],10,Entidade: Rubi - Empresas e Filiais - Parte 2 (Liminares) - TAMANHO: G,Dev Fullstack,Dev 10,10.0,01/04/2026,14/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 11],11,Entidade: Rubi - Empresas e Filiais - Parte 3 (Views Analíticas Restantes) - TAMANHO: M,Dev Fullstack,Dev 2,4.0,03/04/2026,08/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 12],12,Entidade: Rubi - Outras Empresas e Anuidades de Colaboradores - TAMANHO: M,Dev Fullstack,Dev 1,6.0,06/04/2026,13/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 13],13,Entidade: Rubi - Ficha Complementar e Informações de Estágio - TAMANHO: M,Dev Fullstack,Dev 8,8.0,07/04/2026,16/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 14],14,Entidade: Rubi - Percentuais Livres do Empregado - TAMANHO: P,Dev Fullstack,Dev 9,3.0,08/04/2026,10/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 15],15,Entidade: Rubi - Ficha Básica do Colaborador - TAMANHO: G,Dev Fullstack,Dev 2,9.0,09/04/2026,21/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 16],16,Entidade: Rubi - Históricos de Colaboradores - Parte 1 - TAMANHO: G,Dev Fullstack,Dev 4,10.0,10/04/2026,23/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 17],17,Entidade: Rubi - Históricos de Colaboradores - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 3,10.0,13/04/2026,24/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 18],18,Entidade: Rubi - Históricos de Colaboradores - Parte 3 - TAMANHO: G,Dev Fullstack,Dev 6,10.0,13/04/2026,24/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 19],19,Entidade: Rubi - Históricos de Colaboradores - Parte 4 - TAMANHO: G,Dev Fullstack,Dev 9,7.0,13/04/2026,21/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 20],20,Entidade: Rubi - Afastamentos de Colaboradores - TAMANHO: P,Dev Fullstack,Dev 1,4.0,14/04/2026,17/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 21],21,Entidade: Rubi - Férias - Parte 1 (Recibos e Períodos) - TAMANHO: M,Dev Fullstack,Dev 5,6.0,14/04/2026,21/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 22],22,Entidade: Rubi - Férias - Parte 2 (Programação) - TAMANHO: P,Dev Fullstack,Dev 7,4.0,14/04/2026,17/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 23],23,Entidade: Rubi - Causas de Demissão - TAMANHO: P,Dev Fullstack,Dev 10,3.0,15/04/2026,17/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 24],24,Entidade: Rubi - Rescisão - Parte 1 (Mestre e Complementar) - TAMANHO: M,Dev Fullstack,Dev 8,6.0,17/04/2026,24/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 25],25,Entidade: Rubi - Rescisão - Parte 2 (Eventos) - TAMANHO: M,Dev Fullstack,Dev 1,4.0,20/04/2026,23/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 26],26,Entidade: Rubi - Códigos de Cálculo - TAMANHO: P,Dev Fullstack,Dev 7,3.0,20/04/2026,22/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 27],27,Entidade: Rubi - Movimento para Folha - TAMANHO: M,Dev Fullstack,Dev 10,3.0,20/04/2026,22/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 28],28,Entidade: Rubi - Informações Demonstrativo Pagamento - TAMANHO: P,Dev Fullstack,Dev 2,1.0,22/04/2026,22/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 29],29,Entidade: Rubi - Ficha Financeira (PARTICIONADA CRÍTICA) - TAMANHO: G,Dev Fullstack,Dev 5,7.0,22/04/2026,30/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 30],30,Entidade: Rubi - Códigos Lançamento Contábil e Naturezas de Despesa - TAMANHO: M,Dev Fullstack,Dev 9,6.0,22/04/2026,29/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 31],31,Entidade: Rubi - Contabilização (PARTICIONADA) - TAMANHO: M,Dev Fullstack,Dev 2,4.0,23/04/2026,28/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 32],32,"Entidade: Rubi - Dados Geográficos (Bairros, Cidades, Países) - TAMANHO: G",Dev Fullstack,Dev 7,9.0,23/04/2026,05/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 33],33,Entidade: Rubi - Motivos de Movimentação - TAMANHO: P,Dev Fullstack,Dev 10,3.0,23/04/2026,27/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 34],34,Entidade: Rubi - Ficha Médica e Deficiências - TAMANHO: M,Dev Fullstack,Dev 1,6.0,24/04/2026,01/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 35],35,Entidade: Rubi - eSocial - Pendências - TAMANHO: P,Dev Fullstack,Dev 4,3.0,24/04/2026,28/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 36],36,Entidade: Rubi - eSocial - Status (PARTICIONADAS STAGING) - TAMANHO: M,Dev Fullstack,Dev 3,6.0,27/04/2026,04/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 37],37,Entidade: Rubi - Listas Definidas pelo Usuário - TAMANHO: M,Dev Fullstack,Dev 6,7.0,27/04/2026,05/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 38],38,Entidade: Rubi - Tabelas Usuário - Crédito Bancário - TAMANHO: G,Dev Fullstack,Dev 8,8.0,27/04/2026,06/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 39],39,Entidade: Rubi - Tabelas Usuário - Cronograma e Registro de Encargos - TAMANHO: G,Dev Fullstack,Dev 10,10.0,28/04/2026,11/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 40],40,Entidade: Rubi - Views Analíticas RH - Parte 1 - TAMANHO: M,Dev Fullstack,Dev 2,6.0,29/04/2026,06/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 41],41,Entidade: Rubi - Views Analíticas Especiais e Integração Qlik - TAMANHO: M,Dev Fullstack,Dev 4,2.0,29/04/2026,30/04/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 42],42,Entidade: Rubi - Tabelas Schema-Only - TAMANHO: G,Dev Fullstack,Dev 9,10.0,30/04/2026,13/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 43],43,Entidade: Rubi - Tabelas Schema-Only - Lote 2 - TAMANHO: G,Dev Fullstack,Dev 4,8.0,01/05/2026,12/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 44],44,Entidade: CIC - Controle de Compensação - TAMANHO: P,Dev Fullstack,Dev 5,3.0,01/05/2026,05/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 45],45,Entidade: Egate - Notas Fiscais de Serviço e Gestão BP - TAMANHO: M,Dev Fullstack,Dev 1,4.0,04/05/2026,07/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 46],46,Entidade: Egate - Movimentação e Entrada de Notas - TAMANHO: P,Dev Fullstack,Dev 3,2.0,05/05/2026,06/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 47],47,Entidade: Egate - Complemento de Preço e Garantias - TAMANHO: P,Dev Fullstack,Dev 5,3.0,06/05/2026,08/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 48],48,Entidade: Egate - Refaturamento - TAMANHO: P,Dev Fullstack,Dev 6,1.0,06/05/2026,06/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 49],49,Entidade: Logs de SLA de Itens - Portal GT - TAMANHO: P,Dev Fullstack,Dev 7,1.0,06/05/2026,06/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 50],50,Entidade: Documentos Fiscais TaxOne - Ingestão API Síncrona - TAMANHO: G,Dev Fullstack,Dev 2,8.0,07/05/2026,18/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 51],51,Entidade: Documentos Fiscais TaxOne - Views Analíticas - TAMANHO: M,Dev Fullstack,Dev 3,4.0,07/05/2026,12/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 52],52,Entidade: Tabelas Manuais - TAMANHO: P,Dev Fullstack,Dev 6,3.0,07/05/2026,11/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 53],53,"Entidade: Workday - Dados Pessoais, Remuneração, Benefícios e Financeiro - Ingestão Base - TAMANHO: G",Dev Fullstack,Dev 7,8.0,07/05/2026,18/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 54],54,Entidade: Workday - Contratação e Organização - Ingestão Base - TAMANHO: G,Dev Fullstack,Dev 8,9.0,07/05/2026,19/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 55],55,"Entidade: Workday - Dados Pessoais, Remuneração, Benefícios e Financeiro - Views Analíticas - TAMANHO: M",Dev Fullstack,Dev 1,5.0,08/05/2026,14/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 56],56,Entidade: Workday - Views Normalized - Dados Pessoais Parte 1 - TAMANHO: G,Dev Fullstack,Dev 5,9.0,11/05/2026,21/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 57],57,Entidade: Workday - Views Normalized - Contratação - TAMANHO: M,Dev Fullstack,Dev 6,6.0,12/05/2026,19/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 58],58,Entidade: Workday - Views Normalized - Estrutura Organizacional Parte 1 - TAMANHO: G,Dev Fullstack,Dev 10,6.0,12/05/2026,19/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 59],59,Entidade: Workday - Views Normalized - Estrutura Organizacional Parte 2 - TAMANHO: M,Dev Fullstack,Dev 3,5.0,13/05/2026,19/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 60],60,Entidade: Workday - Views Normalized - Movimentação de Pessoal Parte 1 - TAMANHO: G,Dev Fullstack,Dev 4,7.0,13/05/2026,21/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 61],61,Entidade: Workday - Views Normalized - Movimentação de Pessoal Parte 2 - TAMANHO: G,Dev Fullstack,Dev 9,7.0,14/05/2026,22/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 62],62,Entidade: Workday - Views Normalized - Remuneração Parte 1 - TAMANHO: G,Dev Fullstack,Dev 1,7.0,15/05/2026,25/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 63],63,Entidade: Workday - Views Normalized - Remuneração Parte 2 - TAMANHO: P,Dev Fullstack,Dev 2,3.0,19/05/2026,21/05/2026
+Squad 4,SHARED SERVICES A,[SHARED SERVICES - 64],64,Entidade: Workday - Views Normalized - Benefícios Parte 1 - TAMANHO: G,Dev Fullstack,Dev 7,8.0,19/05/2026,28/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 65],65,Entidade: Workday - Views Normalized - Desligamento - TAMANHO: P,Dev Fullstack,Dev 3,3.0,23/03/2026,25/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 66],66,Entidade: Workday - Views Analytics - Remuneração e Desligamento - TAMANHO: M,Dev Fullstack,Dev 4,1.0,23/03/2026,23/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 67],67,"Entidade: SOI - Tabelas Base (Family Members, PLM, WT8) - TAMANHO: P",Dev Fullstack,Dev 5,3.0,23/03/2026,25/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 68],68,"Entidade: SOI - Tabelas Particionadas (Basic Data, Local Data, Actions) - TAMANHO: P",Dev Fullstack,Dev 6,3.0,23/03/2026,25/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 69],69,Entidade: SOI - Tabelas de Configuração - TAMANHO: G,Dev Fullstack,Dev 7,10.0,23/03/2026,03/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 70],70,Entidade: SOI - Tabelas de Configuração - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 8,10.0,23/03/2026,03/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 71],71,Entidade: SOI - Tabelas de Configuração - Parte 3 - TAMANHO: G,Dev Fullstack,Dev 9,9.0,23/03/2026,02/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 72],72,Entidade: SOI - Tabelas de Staging (Schema Only) - Parte 4 - TAMANHO: G,Dev Fullstack,Dev 4,3.0,24/03/2026,26/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 73],73,Entidade: SOI - Views Base (Check Grupo FCA) - TAMANHO: P,Dev Fullstack,Dev 3,2.0,26/03/2026,27/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 74],74,Entidade: SOI - Views Primárias FCA_RH_SOI - Parte 1 (PSA e Dados Base) - TAMANHO: G,Dev Fullstack,Dev 5,10.0,26/03/2026,08/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 75],75,Entidade: SOI - Views Primárias FCA_RH_SOI - Parte 2 (Basic Data) - TAMANHO: M,Dev Fullstack,Dev 6,4.0,26/03/2026,31/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 76],76,Entidade: SOI - Views de Validação e Check - TAMANHO: M,Dev Fullstack,Dev 10,5.0,26/03/2026,01/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 77],77,Entidade: SOI - Views de Employee Data - TAMANHO: M,Dev Fullstack,Dev 4,4.0,27/03/2026,01/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 78],78,Entidade: SOI - Views de Forecast e Budget - TAMANHO: P,Dev Fullstack,Dev 3,2.0,30/03/2026,31/03/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 79],79,Entidade: SOI - Views Stellantis Employee - Parte 1 (Core) - TAMANHO: G,Dev Fullstack,Dev 3,6.0,01/04/2026,08/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 80],80,Entidade: SOI - Views Stellantis Employee - Parte 2 (Especializadas) - TAMANHO: G,Dev Fullstack,Dev 6,8.0,01/04/2026,10/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 81],81,"Entidade: SOI - Views Stellantis Especiais (FLUA, Apps, Manufatura) - TAMANHO: G",Dev Fullstack,Dev 2,8.0,02/04/2026,13/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 82],82,Entidade: SOI - Views de Liderança e Índices - TAMANHO: P,Dev Fullstack,Dev 4,3.0,02/04/2026,06/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 83],83,Entidade: SOI - Views Analíticas de Consumo (Datasets Especializados) - TAMANHO: G,Dev Fullstack,Dev 10,10.0,02/04/2026,15/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 84],84,Entidade: CROSS - Views de Validação e Check de Erros - TAMANHO: P,Dev Fullstack,Dev 9,3.0,03/04/2026,07/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 85],85,Entidade: CROSS - Views de Budget e Forecast - TAMANHO: P,Dev Fullstack,Dev 7,2.0,06/04/2026,07/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 86],86,Entidade: CROSS - Views de Employee Data e People Analytics - TAMANHO: M,Dev Fullstack,Dev 8,4.0,06/04/2026,09/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 87],87,Entidade: HandsOn - Tabelas Base Handson (Formulários) - TAMANHO: M,Dev Fullstack,Dev 1,2.0,07/04/2026,08/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 89],89,Entidade: HandsOn - Tabelas de Processos Digitais (Offboarding) - TAMANHO: G,Dev Fullstack,Dev 4,9.0,07/04/2026,17/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 90],90,Entidade: HandsOn - Tabelas de Segurança (Security Card) - TAMANHO: M,Dev Fullstack,Dev 7,3.0,08/04/2026,10/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 91],91,"Entidade: HandsOn - Dados Demográficos (Etnia, Gênero, Nome Social) - TAMANHO: G",Dev Fullstack,Dev 9,10.0,08/04/2026,21/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 92],92,Entidade: HandsOn - Processos Digitais Gerais - TAMANHO: P,Dev Fullstack,Dev 1,3.0,09/04/2026,13/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 93],93,Entidade: HandsOn - Dados PWD (Pessoa com Deficiência) - TAMANHO: M,Dev Fullstack,Dev 3,4.0,09/04/2026,14/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 94],94,Entidade: HandsOn - Tabelas Formulário Alternativas - TAMANHO: P,Dev Fullstack,Dev 5,3.0,09/04/2026,13/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 95],95,Entidade: HandsOn - Views de Controle e Variações - TAMANHO: P,Dev Fullstack,Dev 8,3.0,10/04/2026,14/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 96],96,Entidade: HandsOn - Views de Integração HRIS - TAMANHO: P,Dev Fullstack,Dev 6,2.0,13/04/2026,14/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 97],97,Entidade: HandsOn - Views de Integração HS Security Card - TAMANHO: P,Dev Fullstack,Dev 7,3.0,13/04/2026,15/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 98],98,Entidade: CROSS - Views de Liderança e Organização - TAMANHO: M,Dev Fullstack,Dev 1,2.0,14/04/2026,15/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 99],99,"Entidade: CROSS - Views Stellantis (Diversity, Férias, Turnover) - TAMANHO: G",Dev Fullstack,Dev 2,7.0,14/04/2026,22/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 100],100,Entidade: CROSS - Views de Integração RUBI - TAMANHO: M,Dev Fullstack,Dev 5,4.0,14/04/2026,17/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 101],101,Entidade: CROSS - Views de Integração VetoRH - TAMANHO: M,Dev Fullstack,Dev 3,5.0,15/04/2026,21/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 102],102,Entidade: CROSS - Views de Serviços Especializados - TAMANHO: M,Dev Fullstack,Dev 6,5.0,15/04/2026,21/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 103],103,"Entidade: COMPENSATION - Views de Budget, Espelho Contábil e Funcionários - TAMANHO: M",Dev Fullstack,Dev 8,2.0,15/04/2026,16/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 104],104,"Entidade: COMPENSATION - Views Especializadas (Benefits, Horas Extras, Saturation) - TAMANHO: M",Dev Fullstack,Dev 1,3.0,16/04/2026,20/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 105],105,Entidade: COMPLIENCE - View de Hiring Monthly - TAMANHO: P,Dev Fullstack,Dev 7,1.0,16/04/2026,16/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 106],106,Entidade: CROSS - View de Check Erros Automático - TAMANHO: P,Dev Fullstack,Dev 10,1.0,16/04/2026,16/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 107],107,Entidade: ENDUSER - Views de Headcount e Turnover - TAMANHO: M,Dev Fullstack,Dev 7,2.0,17/04/2026,20/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 108],108,Entidade: HRBP - View de People Analytics Employee Data - TAMANHO: P,Dev Fullstack,Dev 8,1.0,17/04/2026,17/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 109],109,Entidade: HS - View de Lider Carteira Condução - TAMANHO: P,Dev Fullstack,Dev 10,1.0,17/04/2026,17/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 110],110,Entidade: JURIDICO ANALYTICS - Views de Índice de Judicialização - TAMANHO: P,Dev Fullstack,Dev 4,2.0,20/04/2026,21/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 111],111,Entidade: LABOUR RELATIONS - View de CBO Cota Aprendiz - TAMANHO: P,Dev Fullstack,Dev 5,1.0,20/04/2026,20/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 112],112,Entidade: LEARNING - Views de Turnover e Base Efetivos - TAMANHO: M,Dev Fullstack,Dev 8,3.0,20/04/2026,22/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 113],113,Entidade: MANUFACTURING SCBU - View de Headcount SCBU - TAMANHO: P,Dev Fullstack,Dev 10,1.0,20/04/2026,20/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 114],114,Entidade: MANUFATURA ANALYTICS - Views de Manufacturing - TAMANHO: P,Dev Fullstack,Dev 1,3.0,21/04/2026,23/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 115],115,Entidade: MANUFATURA ICT - View de Email Bluecollar - TAMANHO: P,Dev Fullstack,Dev 5,1.0,21/04/2026,21/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 116],116,Entidade: ORG DESIGN ANALYTICS - View de Masterfile - TAMANHO: M,Dev Fullstack,Dev 7,4.0,21/04/2026,24/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 117],117,Entidade: REAL STATE - View de Headcount Site - TAMANHO: P,Dev Fullstack,Dev 10,1.0,21/04/2026,21/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 118],118,Entidade: TALENT ACQUISITION - View de Turnover - TAMANHO: P,Dev Fullstack,Dev 3,1.0,22/04/2026,22/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 119],119,Entidade: TALENT MANAGEMENT - View de Turnover Enterview - TAMANHO: P,Dev Fullstack,Dev 4,1.0,22/04/2026,22/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 120],120,"Entidade: WORKFORCE ANALYTICS - Views de Hiring, Turnover e Check Erros - TAMANHO: P",Dev Fullstack,Dev 5,3.0,22/04/2026,24/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 121],121,Entidade: Tabelas Manuais - Staging_CIW - TAMANHO: G,Dev Fullstack,Dev 6,8.0,22/04/2026,01/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 122],122,Entidade: Tabelas Manuais - CIW - TAMANHO: G,Dev Fullstack,Dev 9,8.0,22/04/2026,01/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 123],123,Entidade: Tabelas Manuais - FSE_HR e FSE_HRS - TAMANHO: G,Dev Fullstack,Dev 10,10.0,22/04/2026,05/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 124],124,Entidade: Tabelas Manuais - FSE_HRS - TAMANHO: G,Dev Fullstack,Dev 2,10.0,23/04/2026,06/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 125],125,Entidade: Tabelas Manuais - FSE_HRS Lote 2 - TAMANHO: G,Dev Fullstack,Dev 3,8.0,23/04/2026,04/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 126],126,Entidade: Tabelas e View Manuais - FSE_PI - TAMANHO: M,Dev Fullstack,Dev 4,5.0,23/04/2026,29/04/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 127],127,Entidade: Tabelas Manuais - FSE_TAX - TAMANHO: G,Dev Fullstack,Dev 8,10.0,23/04/2026,06/05/2026
+Squad 1,SHARED SERVICES B,[SHARED SERVICES - 128],128,Entidade: Tabelas e Views Manuais Restantes - TAMANHO: G,Dev Fullstack,Dev 1,7.0,24/04/2026,04/05/2026
+Squad 8,FINANCE,[FINANCE - 1],1,Entidade: NFe Entrada FIAT - TAMANHO: M,Dev Fullstack,Dev 1,5.0,23/03/2026,27/03/2026
+Squad 8,FINANCE,[FINANCE - 2],2,Entidade: NFe Entrada FPT - TAMANHO: M,Dev Fullstack,Dev 1,5.0,30/03/2026,03/04/2026
+Squad 8,FINANCE,[FINANCE - 3],3,Entidade: NFe Entrada CMA - TAMANHO: M,Dev Fullstack,Dev 2,5.0,01/04/2026,07/04/2026
+Squad 8,FINANCE,[FINANCE - 4],4,Entidade: NFe Entrada CMP - TAMANHO: M,Dev Fullstack,Dev 3,5.0,01/04/2026,07/04/2026
+Squad 8,FINANCE,[FINANCE - 5],5,Entidade: NFe Entrada PCMA - TAMANHO: M,Dev Fullstack,Dev 4,5.0,01/04/2026,07/04/2026
+Squad 8,FINANCE,[FINANCE - 6],6,Entidade: NFe Entrada Teksid - TAMANHO: M,Dev Fullstack,Dev 5,5.0,01/04/2026,07/04/2026
+Squad 8,FINANCE,[FINANCE - 7],7,Entidade: CTe Entrada FIAT - TAMANHO: M,Dev Fullstack,Dev 1,5.0,06/04/2026,10/04/2026
+Squad 8,FINANCE,[FINANCE - 8],8,Entidade: CTe Entrada FPT - TAMANHO: M,Dev Fullstack,Dev 2,5.0,08/04/2026,14/04/2026
+Squad 8,FINANCE,[FINANCE - 9],9,Entidade: CTe Entrada CMA - TAMANHO: M,Dev Fullstack,Dev 3,5.0,08/04/2026,14/04/2026
+Squad 8,FINANCE,[FINANCE - 10],10,Entidade: CTe Entrada CMP - TAMANHO: M,Dev Fullstack,Dev 4,5.0,08/04/2026,14/04/2026
+Squad 8,FINANCE,[FINANCE - 11],11,Entidade: CTe Entrada PCMA - TAMANHO: M,Dev Fullstack,Dev 5,5.0,08/04/2026,14/04/2026
+Squad 8,FINANCE,[FINANCE - 12],12,Entidade: CTe Entrada Teksid - TAMANHO: M,Dev Fullstack,Dev 1,5.0,13/04/2026,17/04/2026
+Squad 8,FINANCE,[FINANCE - 13],13,Entidade: NFe/CTe Saída FIAT - TAMANHO: M,Dev Fullstack,Dev 2,6.0,15/04/2026,22/04/2026
+Squad 8,FINANCE,[FINANCE - 14],14,Entidade: NFe/CTe Saída FPT - TAMANHO: G,Dev Fullstack,Dev 3,7.0,15/04/2026,23/04/2026
+Squad 8,FINANCE,[FINANCE - 15],15,Entidade: NFe/CTe Saída CMA - TAMANHO: M,Dev Fullstack,Dev 4,4.0,15/04/2026,20/04/2026
+Squad 8,FINANCE,[FINANCE - 16],16,Entidade: NFe/CTe Saída CMP - TAMANHO: M,Dev Fullstack,Dev 5,4.0,15/04/2026,20/04/2026
+Squad 8,FINANCE,[FINANCE - 17],17,Entidade: NFe/CTe Saída PCMA - TAMANHO: M,Dev Fullstack,Dev 1,4.0,20/04/2026,23/04/2026
+Squad 8,FINANCE,[FINANCE - 18],18,Entidade: NFe/CTe Saída Teksid - TAMANHO: M,Dev Fullstack,Dev 4,4.0,21/04/2026,24/04/2026
+Squad 8,FINANCE,[FINANCE - 19],19,Entidade: Manifesto Destinatário e Elog - TAMANHO: P,Dev Fullstack,Dev 5,2.0,21/04/2026,22/04/2026
+Squad 8,FINANCE,[FINANCE - 20],20,Entidade: User Parameters TaxOpe - Parte 1 - TAMANHO: M,Dev Fullstack,Dev 2,6.0,23/04/2026,30/04/2026
+Squad 8,FINANCE,[FINANCE - 21],21,Entidade: User Parameters TaxOpe - Parte 2 (CNPJs e Argentina) - TAMANHO: G,Dev Fullstack,Dev 5,7.0,23/04/2026,01/05/2026
+Squad 8,FINANCE,[FINANCE - 22],22,Entidade: User Parameters TaxOpe - Parte 3 (Estabelecimento e Fornecedor) - TAMANHO: G,Dev Fullstack,Dev 1,10.0,24/04/2026,07/05/2026
+Squad 8,FINANCE,[FINANCE - 23],23,Entidade: Recuperação Fiscal - Carga Fria - TAMANHO: G,Dev Fullstack,Dev 3,8.0,24/04/2026,05/05/2026
+Squad 8,FINANCE,[FINANCE - 24],24,"Entidade: Interfaces SAP ZRFI - Parte 1 (410, 430, 431) - TAMANHO: G",Dev Fullstack,Dev 4,6.0,27/04/2026,04/05/2026
+Squad 8,FINANCE,[FINANCE - 25],25,"Entidade: Interfaces SAP ZRFI - Parte 2 (440, 441, 442, 300) - TAMANHO: G",Dev Fullstack,Dev 2,8.0,01/05/2026,12/05/2026
+Squad 8,FINANCE,[FINANCE - 26],26,Entidade: Cloud Functions Storage Trigger - Parte 1 - TAMANHO: G,Dev Fullstack,Dev 5,9.0,04/05/2026,14/05/2026
+Squad 8,FINANCE,[FINANCE - 27],27,Entidade: Cloud Functions Storage Trigger - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 4,7.0,05/05/2026,13/05/2026
+Squad 8,FINANCE,[FINANCE - 28],28,Entidade: Cloud Functions Storage Trigger - Parte 3 - TAMANHO: P,Dev Fullstack,Dev 3,2.0,06/05/2026,07/05/2026
+Squad 2,FINANCE,[FINANCE - 29],29,Entidade: SAP Hana Conciliação - Cloud Functions Storage Trigger - TAMANHO: M,Dev Fullstack,Dev 8,4.0,08/05/2026,13/05/2026
+Squad 2,FINANCE,[FINANCE - 30],30,Entidade: Padrões Fisco Argentina - Storage Trigger - Parte 1 - TAMANHO: G,Dev Fullstack,Dev 4,10.0,08/05/2026,21/05/2026
+Squad 2,FINANCE,[FINANCE - 31],31,Entidade: Padrões Fisco Argentina - Storage Trigger - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 2,9.0,08/05/2026,20/05/2026
+Squad 2,FINANCE,[FINANCE - 32],32,Entidade: Análise Alíquota Mensal e Novos Fornecedores - TAMANHO: G,Dev Fullstack,Dev 7,10.0,08/05/2026,21/05/2026
+Squad 2,FINANCE,[FINANCE - 33],33,Entidade: Análises Divergências Padrões Argentina - Parte 1 - TAMANHO: P,Dev Fullstack,Dev 10,4.0,08/05/2026,13/05/2026
+Squad 2,FINANCE,[FINANCE - 34],34,Entidade: Classificação Outros Ingressos Argentina - TAMANHO: G,Dev Fullstack,Dev 1,8.0,08/05/2026,19/05/2026
+Squad 2,FINANCE,[FINANCE - 35],35,Entidade: User Parameters TaxOpe - Parte 4 (De-Para Estabelecimento) - TAMANHO: P,Dev Fullstack,Dev 5,1.0,08/05/2026,08/05/2026
+Squad 2,FINANCE,[FINANCE - 36],36,Entidade: Recuperação Fiscal - Garantia e Bonus - TAMANHO: M,Dev Fullstack,Dev 9,5.0,08/05/2026,14/05/2026
+Squad 8,FINANCE,[FINANCE - 37],37,Entidade: Recuperação Fiscal - Outros Processos Parte 2 - TAMANHO: M,Dev Fullstack,Dev 1,4.0,08/05/2026,13/05/2026
+Squad 8,FINANCE,[FINANCE - 38],38,Entidade: Análises Divergências Padrões CABA e Entre Rios - TAMANHO: M,Dev Fullstack,Dev 3,6.0,08/05/2026,15/05/2026
+Squad 2,FINANCE,[FINANCE - 39],39,Entidade: Análises Divergências Padrões Argentina - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 3,10.0,11/05/2026,22/05/2026
+Squad 2,FINANCE,[FINANCE - 40],40,Entidade: Análises Divergências Padrões Argentina - Parte 3 - TAMANHO: G,Dev Fullstack,Dev 5,8.0,11/05/2026,20/05/2026
+Squad 2,FINANCE,[FINANCE - 41],41,Entidade: Tax NF Head e Customaterial - TAMANHO: M,Dev Fullstack,Dev 6,5.0,11/05/2026,15/05/2026
+Squad 8,FINANCE,[FINANCE - 42],42,Entidade: Recuperação Fiscal - Advertising - TAMANHO: M,Dev Fullstack,Dev 2,5.0,13/05/2026,19/05/2026
+Squad 2,FINANCE,[FINANCE - 43],43,Entidade: Recuperação Fiscal - Frete - TAMANHO: G,Dev Fullstack,Dev 8,6.0,14/05/2026,21/05/2026
+Squad 2,FINANCE,[FINANCE - 44],44,Entidade: Recuperação Fiscal - Outros Processos Parte 1 - TAMANHO: G,Dev Fullstack,Dev 10,9.0,14/05/2026,26/05/2026
+Squad 8,FINANCE,[FINANCE - 45],45,Entidade: Análise IPI Rota 20/30 e Apurações - TAMANHO: G,Dev Fullstack,Dev 1,8.0,14/05/2026,25/05/2026
+Squad 8,FINANCE,[FINANCE - 46],46,Entidade: Análise Malha Fina - TAMANHO: G,Dev Fullstack,Dev 4,7.0,14/05/2026,22/05/2026
+Squad 2,FINANCE,[FINANCE - 47],47,Entidade: Vinculação NFe/CTe - TAMANHO: G,Dev Fullstack,Dev 9,8.0,15/05/2026,26/05/2026
+Squad 8,FINANCE,[FINANCE - 48],48,Entidade: TPC Integração AWS/Azure via DataStage - Parte 1 - TAMANHO: G,Dev Fullstack,Dev 5,9.0,15/05/2026,27/05/2026
+Squad 2,FINANCE,[FINANCE - 49],49,Entidade: TPC Integração AWS/Azure via DataStage - Parte 2 - TAMANHO: G,Dev Fullstack,Dev 6,8.0,18/05/2026,27/05/2026
+Squad 8,FINANCE,[FINANCE - 50],50,Entidade: TPC Integração AWS/Azure via DataStage - Parte 3 - TAMANHO: G,Dev Fullstack,Dev 3,9.0,18/05/2026,28/05/2026
+Squad 3,FINANCE,[FINANCE - 51],51,Entidade: TPC Integração AWS/Azure via DataStage - Parte 3 - TAMANHO: G,Dev Fullstack,Dev 2,8.0,19/05/2026,28/05/2026
+Squad 7,RH,[RH - 1],1,Entidade: Vetorh - Estruturas Organizacionais Parte 1 - TAMANHO: G,Dev Fullstack,Dev 1,10.0,23/03/2026,03/04/2026
+Squad 7,RH,[RH - 2],2,Entidade: Vetorh - Cargos e Vínculos - TAMANHO: G,Dev Fullstack,Dev 2,10.0,01/04/2026,14/04/2026
+Squad 7,RH,[RH - 3],3,Entidade: Vetorh - Dados de Colaboradores Parte 1 - TAMANHO: G,Dev Fullstack,Dev 3,10.0,01/04/2026,14/04/2026
+Squad 7,RH,[RH - 4],4,Entidade: Vetorh - View PCD - TAMANHO: P,Dev Fullstack,Dev 4,1.0,01/04/2026,01/04/2026
+Squad 7,RH,[RH - 5],5,Entidade: Vetorh - Históricos de Movimentação - TAMANHO: G,Dev Fullstack,Dev 5,10.0,01/04/2026,14/04/2026
+Squad 7,RH,[RH - 6],6,Entidade: Vetorh - Ponto e Jornada Parte 1 - TAMANHO: G,Dev Fullstack,Dev 4,10.0,02/04/2026,15/04/2026
+Squad 7,RH,[RH - 7],7,Entidade: Vetorh - Ponto e Jornada Parte 2 - TAMANHO: P,Dev Fullstack,Dev 1,2.0,06/04/2026,07/04/2026
+Squad 7,RH,[RH - 8],8,Entidade: Vetorh - Saúde e Segurança Parte 1 - TAMANHO: G,Dev Fullstack,Dev 1,10.0,08/04/2026,21/04/2026
+Squad 7,RH,[RH - 9],9,Entidade: Vetorh - Saúde e Segurança Parte 2 + View Marcações - TAMANHO: P,Dev Fullstack,Dev 2,2.0,15/04/2026,16/04/2026
+Squad 7,RH,[RH - 10],10,Entidade: Vetorh - Saúde e Segurança Parte 3 + Views Acidentes - TAMANHO: G,Dev Fullstack,Dev 3,10.0,15/04/2026,28/04/2026
+Squad 7,RH,[RH - 11],11,Entidade: Vetorh - Medicina do Trabalho Parte 1 - TAMANHO: G,Dev Fullstack,Dev 5,9.0,15/04/2026,27/04/2026
+Squad 7,RH,[RH - 12],12,Entidade:  Vetorh - Views Absenteísmo e Medicina - TAMANHO: P,Dev Fullstack,Dev 4,3.0,16/04/2026,20/04/2026
+Squad 7,RH,[RH - 13],13,Entidade: Vetorh - Treinamento - TAMANHO: G,Dev Fullstack,Dev 2,8.0,17/04/2026,28/04/2026
+Squad 7,RH,[RH - 14],14,Entidade: Vetorh - Views Medicina Analytics - TAMANHO: P,Dev Fullstack,Dev 4,2.0,21/04/2026,22/04/2026
+Squad 7,RH,[RH - 15],15,Entidade: Vetorh - Riscos Ambientais - TAMANHO: G,Dev Fullstack,Dev 1,9.0,22/04/2026,04/05/2026
+Squad 7,RH,[RH - 16],16,Entidade: Vetorh - Tabelas Usuário Parte 1 - TAMANHO: G,Dev Fullstack,Dev 4,8.0,23/04/2026,04/05/2026
+Squad 7,RH,[RH - 17],17,Entidade: Vetorh - Tabelas Usuário Parte 2 + Views Manufacturing - TAMANHO: G,Dev Fullstack,Dev 5,7.0,28/04/2026,06/05/2026
+Squad 7,RH,[RH - 18],18,Entidade: Vetorh - Tabelas Usuário Parte 3 - TAMANHO: G,Dev Fullstack,Dev 2,7.0,29/04/2026,07/05/2026
+Squad 7,RH,[RH - 19],19,Entidade: Vetorh - Tabelas Usuário Parte 4 + Views HRBP - TAMANHO: G,Dev Fullstack,Dev 3,10.0,29/04/2026,12/05/2026
+Squad 7,RH,[RH - 20],20,Entidade: Vetorh - Tabelas Usuário Parte 5 + Views Qualidade - TAMANHO: M,Dev Fullstack,Dev 1,6.0,05/05/2026,12/05/2026
+Squad 7,RH,[RH - 21],21,Entidade: Vetorh - Tabelas Usuário Finais + Views Cross Parte 1 - TAMANHO: G,Dev Fullstack,Dev 4,10.0,05/05/2026,18/05/2026
+Squad 7,RH,[RH - 22],22,Entidade: Vetorh - Views Cross Parte 2 (Dependem de H18-21) - TAMANHO: G,Dev Fullstack,Dev 5,10.0,07/05/2026,20/05/2026
+Squad 7,RH,[RH - 23],23,Entidade: Vetorh - Views People Analytics - TAMANHO: M,Dev Fullstack,Dev 2,6.0,08/05/2026,15/05/2026
+Squad 7,RH,[RH - 24],24,Entidade: Vetorh - Views Medicina e Saúde - TAMANHO: G,Dev Fullstack,Dev 1,7.0,13/05/2026,21/05/2026
+Squad 7,RH,[RH - 25],25,Entidade: Vetorh - Views Segurança e Facilities - TAMANHO: M,Dev Fullstack,Dev 3,5.0,13/05/2026,19/05/2026
+Squad 7,RH,[RH - 26],26,Entidade: Vetorh - Views Manufacturing - TAMANHO: G,Dev Fullstack,Dev 2,8.0,18/05/2026,27/05/2026
+Squad 3,RH,[RH - 27],27,Entidade: Vetorh - Views Qualidade e Compliance - TAMANHO: G,Dev Fullstack,Dev 7,8.0,19/05/2026,28/05/2026
+Squad 3,RH,[RH - 28],28,Entidade: Vetorh - Views NEA e Teletrabalho - TAMANHO: M,Dev Fullstack,Dev 9,5.0,19/05/2026,25/05/2026
+Squad 3,RH,[RH - 29],29,Entidade: Vetorh - Views Cross-FSE Rubi e SOI (Final) - TAMANHO: G,Dev Fullstack,Dev 1,7.0,19/05/2026,27/05/2026
+Squad 3,RH,[RH - 30],30,Entidade: Vetorh - Views Talent Acquisition - TAMANHO: G,Dev Fullstack,Dev 3,9.0,19/05/2026,29/05/2026
+Squad 3,RH,[RH - 31],31,Entidade: Vetorh R066sit Online - TAMANHO: P,Dev Fullstack,Dev 8,2.0,19/05/2026,20/05/2026
+Squad 3,RH,[RH - 32],32,Entidade: Vetorh R070acc Online - TAMANHO: P,Dev Fullstack,Dev 10,2.0,19/05/2026,20/05/2026
+Squad 3,RH,[RH - 33],33,Entidade: Vetorh R086cat Online - TAMANHO: P,Dev Fullstack,Dev 4,2.0,19/05/2026,20/05/2026
+Squad 3,RH,[RH - 34],34,Entidade: Vetorh R066apu (Sequences) - TAMANHO: P,Dev Fullstack,Dev 6,2.0,19/05/2026,20/05/2026
+Squad 7,RH,[RH - 35],35,Entidade: Vetorh R066sit (Sequences) - TAMANHO: P,Dev Fullstack,Dev 4,2.0,19/05/2026,20/05/2026
+Squad 2,RH,[RH - 36],36,Entidade: ELAW Processos - TAMANHO: M,Dev Fullstack,Dev 1,4.0,20/05/2026,25/05/2026
+Squad 3,RH,[RH - 37],37,Entidade: ELAW Bloqueio - TAMANHO: P,Dev Fullstack,Dev 5,2.0,20/05/2026,21/05/2026
+Squad 7,RH,[RH - 38],38,Entidade: ELAW Acordo - TAMANHO: M,Dev Fullstack,Dev 3,4.0,20/05/2026,25/05/2026
+Squad 2,RH,[RH - 39],39,Entidade: ELAW Andamento - TAMANHO: P,Dev Fullstack,Dev 2,2.0,21/05/2026,22/05/2026
+Squad 2,RH,[RH - 40],40,Entidade: ELAW Audiência - TAMANHO: M,Dev Fullstack,Dev 5,4.0,21/05/2026,26/05/2026
+Squad 3,RH,[RH - 41],41,Entidade: ELAW Centro de Custo - TAMANHO: M,Dev Fullstack,Dev 4,4.0,21/05/2026,26/05/2026
+Squad 3,RH,[RH - 42],42,Entidade: ELAW Decisão - TAMANHO: M,Dev Fullstack,Dev 6,4.0,21/05/2026,26/05/2026
+Squad 3,RH,[RH - 43],43,Entidade: ELAW Garantia - TAMANHO: M,Dev Fullstack,Dev 8,4.0,21/05/2026,26/05/2026
+Squad 3,RH,[RH - 44],44,Entidade: ELAW Levantamento - TAMANHO: P,Dev Fullstack,Dev 10,2.0,21/05/2026,22/05/2026
+Squad 7,RH,[RH - 45],45,Entidade: ELAW OBF - TAMANHO: P,Dev Fullstack,Dev 4,2.0,21/05/2026,22/05/2026
+Squad 7,RH,[RH - 46],46,Entidade: ELAW Pagamento - TAMANHO: P,Dev Fullstack,Dev 5,2.0,21/05/2026,22/05/2026
+Squad 2,RH,[RH - 47],47,Entidade: ELAW Pauta - TAMANHO: P,Dev Fullstack,Dev 4,2.0,22/05/2026,25/05/2026
+Squad 2,RH,[RH - 48],48,Entidade: ELAW Perícia - TAMANHO: M,Dev Fullstack,Dev 7,4.0,22/05/2026,27/05/2026
+Squad 2,RH,[RH - 49],49,Entidade: ELAW Recebimento - TAMANHO: P,Dev Fullstack,Dev 8,2.0,22/05/2026,25/05/2026
+Squad 3,RH,[RH - 50],50,Entidade: ELAW Recurso - TAMANHO: P,Dev Fullstack,Dev 5,2.0,22/05/2026,25/05/2026
+Squad 7,RH,[RH - 51],51,Entidade: ELAW Reserva - TAMANHO: P,Dev Fullstack,Dev 1,2.0,22/05/2026,25/05/2026
+Squad 2,RH,[RH - 52],52,Entidade: ELAW Tutela - TAMANHO: P,Dev Fullstack,Dev 2,2.0,25/05/2026,26/05/2026
+Squad 2,RH,[RH - 53],53,Entidade: ELAW Valores Pedidos - TAMANHO: G,Dev Fullstack,Dev 3,8.0,25/05/2026,03/06/2026
+Squad 3,RH,[RH - 54],54,Entidade: ELAW Valores Totais - TAMANHO: P,Dev Fullstack,Dev 10,2.0,25/05/2026,26/05/2026
+Squad 7,RH,[RH - 55],55,Entidade: Espaider - TAMANHO: G,Dev Fullstack,Dev 4,7.0,25/05/2026,02/06/2026
+Squad 7,RH,[RH - 56],56,Entidade: Elaw - Índice de Judicialização (Analytics Cross-Domain) - TAMANHO: P,Dev Fullstack,Dev 5,3.0,25/05/2026,27/05/2026
+Squad 2,RH,[RH - 57],57,Entidade: iTransport Itinerary Performance - TAMANHO: P,Dev Fullstack,Dev 1,2.0,26/05/2026,27/05/2026
+Squad 2,RH,[RH - 58],58,Entidade: iTransport Unit Arrival - TAMANHO: P,Dev Fullstack,Dev 4,2.0,26/05/2026,27/05/2026
+Squad 2,RH,[RH - 59],59,Entidade: iTransport Arrival To Garage - TAMANHO: P,Dev Fullstack,Dev 8,2.0,26/05/2026,27/05/2026
+Squad 3,RH,[RH - 60],60,Entidade: iTransport Punctuality Vehicle - TAMANHO: P,Dev Fullstack,Dev 5,2.0,26/05/2026,27/05/2026
+Squad 3,RH,[RH - 61],61,Entidade: iTransport User Presence - TAMANHO: P,Dev Fullstack,Dev 9,2.0,26/05/2026,27/05/2026
+Squad 7,RH,[RH - 62],62,Entidade: Absenteismo - TAMANHO: G,Dev Fullstack,Dev 1,9.0,26/05/2026,05/06/2026
+Squad 7,RH,[RH - 63],63,Entidade: Org Design Lider Substituto - TAMANHO: P,Dev Fullstack,Dev 3,3.0,26/05/2026,28/05/2026
+Squad 2,RH,[RH - 64],64,Entidade: People Analytics Restricted R048 - TAMANHO: P,Dev Fullstack,Dev 2,2.0,27/05/2026,28/05/2026
+Squad 2,RH,[RH - 65],65,Entidade: Learning - Carga desconhecida - TAMANHO: P,Dev Fullstack,Dev 5,2.0,27/05/2026,28/05/2026
+Squad 2,RH,[RH - 66],66,Entidade: Learning Completed Training (Ano Corrente) - TAMANHO: P,Dev Fullstack,Dev 9,4.0,27/05/2026,01/06/2026
+Squad 2,RH,[RH - 67],67,Entidade: People_Analytics_Restricted - Carga desconhecida - TAMANHO: G,Dev Fullstack,Dev 10,3.0,27/05/2026,29/05/2026
+Squad 3,RH,[RH - 68],68,Entidade: People_Analytics - Diversity - TAMANHO: P,Dev Fullstack,Dev 4,4.0,27/05/2026,01/06/2026
+Squad 3,RH,[RH - 69],69,Entidade: Talent_Acquisition - Lote 1 - TAMANHO: P,Dev Fullstack,Dev 6,2.0,27/05/2026,28/05/2026
+Squad 3,RH,[RH - 70],70,Entidade: External Tables - Lote 1 - TAMANHO: G,Dev Fullstack,Dev 8,8.0,27/05/2026,05/06/2026
+Squad 3,RH,[RH - 71],71,Entidade: External Tables - Lote 2 - TAMANHO: G,Dev Fullstack,Dev 10,9.0,27/05/2026,08/06/2026
+Squad 2,RH,[RH - 72],72,Entidade: External Tables - Lote 3 - TAMANHO: P,Dev Fullstack,Dev 1,3.0,28/05/2026,01/06/2026
+Squad 6,COMERCIAL,[COMERCIAL - 1],1,Entidade: Aprovação Comercial - TAMANHO: P,Dev Fullstack,Dev 1,1.0,23/03/2026,23/03/2026
+Squad 6,COMERCIAL,[COMERCIAL - 2],2,Ingestão Base e Auxiliares - TAMANHO: P,Dev Fullstack,Dev 2,3.0,23/03/2026,25/03/2026
+Squad 6,COMERCIAL,[COMERCIAL - 3],3,"Processamento ML Parte 1 (Topics, Summary, Translation) - TAMANHO: M",Dev Fullstack,Dev 1,5.0,24/03/2026,30/03/2026
+Squad 6,COMERCIAL,[COMERCIAL - 4],4,"Processamento ML Parte 2 (Entity, Ranking) - TAMANHO: M",Dev Fullstack,Dev 2,4.0,26/03/2026,31/03/2026
+Squad 6,COMERCIAL,[COMERCIAL - 5],5,Analytics e Consolidação - TAMANHO: M,Dev Fullstack,Dev 1,4.0,31/03/2026,03/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 6],6,Rankings e Históricos - TAMANHO: M,Dev Fullstack,Dev 2,6.0,01/04/2026,08/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 7],7,Cadastros Básicos e Metadados - TAMANHO: G,Dev Fullstack,Dev 3,9.0,01/04/2026,13/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 8],8,Vendas - Cadastros de Perguntas e Metadados - TAMANHO: G,Dev Fullstack,Dev 4,7.0,01/04/2026,09/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 9],9,Vendas - Entrevistas e Questionários - TAMANHO: G,Dev Fullstack,Dev 5,9.0,01/04/2026,13/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 10],10,"Vendas - Cancelamento, Cotas e Qualidade - TAMANHO: G",Dev Fullstack,Dev 6,8.0,01/04/2026,10/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 11],11,Vendas - Analytics Entrevistas e Qualidade - TAMANHO: M,Dev Fullstack,Dev 7,6.0,01/04/2026,08/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 12],12,Vendas - Analytics Banco de Respostas e Índices Base - TAMANHO: G,Dev Fullstack,Dev 8,7.0,01/04/2026,09/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 13],13,Vendas - Analytics Índices Codificação e 2022 - TAMANHO: G,Dev Fullstack,Dev 9,9.0,01/04/2026,13/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 14],14,Pós-Vendas - Cadastros de Perguntas e Metadados - TAMANHO: G,Dev Fullstack,Dev 10,7.0,01/04/2026,09/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 15],15,Pós-Vendas - Entrevistas e Questionários - TAMANHO: G,Dev Fullstack,Dev 11,9.0,01/04/2026,13/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 16],16,"Pós-Vendas - Cancelamento, Cotas e Qualidade - TAMANHO: M",Dev Fullstack,Dev 12,6.0,01/04/2026,08/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 17],17,Pós-Vendas - Analytics Entrevistas e Qualidade - TAMANHO: M,Dev Fullstack,Dev 13,6.0,01/04/2026,08/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 18],18,Pós-Vendas - Analytics Banco de Respostas e Índices Base - TAMANHO: G,Dev Fullstack,Dev 14,7.0,01/04/2026,09/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 19],19,Pós-Vendas - Analytics Índices Codificação e 2022 - TAMANHO: G,Dev Fullstack,Dev 15,9.0,01/04/2026,13/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 20],20,Vendas PSA - Entrevistas e Cancelamentos - TAMANHO: G,Dev Fullstack,Dev 16,11.0,01/04/2026,15/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 21],21,Pós-Vendas PSA - Entrevistas e Cancelamentos - TAMANHO: G,Dev Fullstack,Dev 17,11.0,01/04/2026,15/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 22],22,Ingestão Staging AURA - Entrevistas e Cancelamentos - TAMANHO: M,Dev Fullstack,Dev 18,4.0,01/04/2026,06/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 23],23,"Ingestão Staging IPSOS - Entrevistas, Perguntas e Qualidade - TAMANHO: G",Dev Fullstack,Dev 19,10.0,01/04/2026,14/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 24],24,"Ingestão Staging IPSOS - Cancelamento, Fechamento e Metadata - TAMANHO: M",Dev Fullstack,Dev 20,6.0,01/04/2026,08/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 25],25,"DataMart AURA - Entrevistas, Verbalizações e Cancelamento - TAMANHO: M",Dev Fullstack,Dev 1,6.0,06/04/2026,13/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 26],26,DataMart IPSOS - Perguntas e Entrevistas Estruturadas - TAMANHO: G,Dev Fullstack,Dev 18,8.0,07/04/2026,16/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 27],27,DataMart IPSOS - Verbalização e Qualidade Metadados - TAMANHO: M,Dev Fullstack,Dev 2,6.0,09/04/2026,16/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 28],28,"DataMart IPSOS - Qualidade Final, Fechamento, Cancelamento e Governança - TAMANHO: G",Dev Fullstack,Dev 7,8.0,09/04/2026,20/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 29],29,Analytics Restricted - Entrevistas e Banco Resposta - TAMANHO: G,Dev Fullstack,Dev 12,8.0,09/04/2026,20/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 30],30,Analytics Restricted + Tabelas Abertas Base - TAMANHO: G,Dev Fullstack,Dev 13,10.0,09/04/2026,22/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 31],31,Views Analytics - AURA e Cadastros Proprietário - TAMANHO: G,Dev Fullstack,Dev 20,7.0,09/04/2026,17/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 32],32,Views Analytics - IPSOS Operacional (Pergunta/Resposta/Verbalização) - TAMANHO: G,Dev Fullstack,Dev 4,8.0,10/04/2026,21/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 33],33,"Views Analytics - IPSOS Entrevistas, Long, Qualidade e Banco Resposta Aberto - TAMANHO: G",Dev Fullstack,Dev 8,8.0,10/04/2026,21/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 34],34,"Views Analytics - Fechados, Índices e Codificação - TAMANHO: G",Dev Fullstack,Dev 10,8.0,10/04/2026,21/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 35],35,Dimensões Geográficas - TAMANHO: M,Dev Fullstack,Dev 14,4.0,10/04/2026,15/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 36],36,Dimensões Demográficas - TAMANHO: M,Dev Fullstack,Dev 6,6.0,13/04/2026,20/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 37],37,Dimensões Veiculares - TAMANHO: G,Dev Fullstack,Dev 1,10.0,14/04/2026,27/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 38],38,Concessionárias e Segmentos - TAMANHO: M,Dev Fullstack,Dev 3,5.0,14/04/2026,20/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 39],39,CSI Vendas - Staging Base - TAMANHO: G,Dev Fullstack,Dev 5,10.0,14/04/2026,27/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 40],40,CSI Vendas - DataMart - TAMANHO: G,Dev Fullstack,Dev 9,10.0,14/04/2026,27/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 41],41,CSI Pós-Vendas - Staging Base - TAMANHO: G,Dev Fullstack,Dev 11,10.0,14/04/2026,27/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 42],42,CSI Pós-Vendas - DataMart - TAMANHO: G,Dev Fullstack,Dev 15,10.0,14/04/2026,27/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 43],43,Metadados e Controle - TAMANHO: G,Dev Fullstack,Dev 19,10.0,15/04/2026,28/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 44],44,After Sales - Argentina e Chile - TAMANHO: G,Dev Fullstack,Dev 14,7.0,16/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 45],45,After Sales - Brasil - TAMANHO: M,Dev Fullstack,Dev 16,4.0,16/04/2026,21/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 45],45,Plan de Ahorro (Consórcio) - Completo - TAMANHO: G,Dev Fullstack,Dev 17,7.0,16/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 46],46,New Vehicle - Brasil - TAMANHO: M,Dev Fullstack,Dev 2,6.0,17/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 47],47,"New Vehicle - Argentina, Chile e Leapmotor - TAMANHO: M",Dev Fullstack,Dev 18,5.0,17/04/2026,23/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 49],49,Call Center e Integrações Especiais - TAMANHO: P,Dev Fullstack,Dev 20,3.0,20/04/2026,22/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 50],50,Emplacamentos Pessoa Jurídica (PJ) - TAMANHO: P,Dev Fullstack,Dev 3,3.0,21/04/2026,23/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 51],51,Emplacamentos Pessoa Física (PF) - TAMANHO: P,Dev Fullstack,Dev 6,3.0,21/04/2026,23/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 52],52,Vendas de Veículos Leves (Light Vehicle Sales) - TAMANHO: M,Dev Fullstack,Dev 7,4.0,21/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 53],53,Powertrain de Veículos Leves (Light Vehicle Powertrain) - TAMANHO: M,Dev Fullstack,Dev 12,4.0,21/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 54],54,Capacidade de Plantas de Veículos (Vehicle Plant Capacity) - TAMANHO: M,Dev Fullstack,Dev 4,5.0,22/04/2026,28/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 55],55,Ciclos de Planejamento de Veículos (Vehicle Cycle Plans) - TAMANHO: M,Dev Fullstack,Dev 8,6.0,22/04/2026,29/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 56],56,Segmentação de Produtos e Previsões (Product Segmentation) - TAMANHO: M,Dev Fullstack,Dev 10,4.0,22/04/2026,27/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 57],57,Governança e Histórico Consolidado (Governance & CCP Hist) - TAMANHO: P,Dev Fullstack,Dev 16,3.0,22/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 58],58,Auditoria e Logs - TAMANHO: P,Dev Fullstack,Dev 13,2.0,23/04/2026,24/04/2026
+Squad 6,COMERCIAL,[COMERCIAL - 59],59,Catálogo e Características Básicas - TAMANHO: G,Dev Fullstack,Dev 20,8.0,23/04/2026,04/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 60],60,Preços e Mercado - TAMANHO: G,Dev Fullstack,Dev 3,9.0,24/04/2026,06/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 61],61,BR Cadastros de Veículos (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 6,10.0,24/04/2026,07/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 62],62,BR Cadastros de Veículos (Parte 2) e Demográficos - TAMANHO: G,Dev Fullstack,Dev 18,10.0,24/04/2026,07/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 63],63,BR Cadastros de Pesquisa e Concessionárias - TAMANHO: G,Dev Fullstack,Dev 2,10.0,27/04/2026,08/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 64],64,BR Cadastros de Respostas e Metadados - TAMANHO: G,Dev Fullstack,Dev 7,10.0,27/04/2026,08/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 65],65,BR DataMart - Entidades Principais - TAMANHO: G,Dev Fullstack,Dev 12,7.0,27/04/2026,05/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 66],66,BR Analytics Restricted - Tabelas SPSS - TAMANHO: G,Dev Fullstack,Dev 13,7.0,27/04/2026,05/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 67],67,BR Analytics Restricted - Views - TAMANHO: G,Dev Fullstack,Dev 14,8.0,27/04/2026,06/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 68],68,BR Analytics - Tabelas SPSS - TAMANHO: M,Dev Fullstack,Dev 16,6.0,27/04/2026,04/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 69],69,BR Analytics Views - Dimensões de Veículos - TAMANHO: G,Dev Fullstack,Dev 17,10.0,27/04/2026,08/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 70],70,BR Analytics Views - Demográficos e Perfil - TAMANHO: G,Dev Fullstack,Dev 1,10.0,28/04/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 71],71,BR Analytics Views - Satisfação e Fidelidade - TAMANHO: G,Dev Fullstack,Dev 5,10.0,28/04/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 72],72,BR Analytics Views - Comportamento de Compra - TAMANHO: G,Dev Fullstack,Dev 9,10.0,28/04/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 73],73,BR Analytics Views - Questionários e Logs - TAMANHO: G,Dev Fullstack,Dev 10,10.0,28/04/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 74],74,AR Staging e DataMart - TAMANHO: G,Dev Fullstack,Dev 11,10.0,28/04/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 75],75,AR DataMart (cont) e Analytics Restricted - TAMANHO: G,Dev Fullstack,Dev 15,10.0,28/04/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 76],76,AR Analytics Restricted (cont) e Analytics Tabelas - TAMANHO: G,Dev Fullstack,Dev 4,10.0,29/04/2026,12/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 77],77,AR Analytics Views (Parte 1) - TAMANHO: G,Dev Fullstack,Dev 19,10.0,29/04/2026,12/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 78],78,AR Analytics Views (Parte 2) e Cockpit - TAMANHO: G,Dev Fullstack,Dev 8,10.0,30/04/2026,13/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 79],79,QFS Brasil - Metadata e Population (Staging e DataMart) - TAMANHO: M,Dev Fullstack,Dev 16,6.0,05/05/2026,12/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 80],80,QFS Brasil - Respondent (Staging e DataMart) - TAMANHO: M,Dev Fullstack,Dev 20,6.0,05/05/2026,12/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 81],81,QFS Brasil - Respondent (Analytics) - TAMANHO: M,Dev Fullstack,Dev 12,4.0,06/05/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 82],82,QFS Brasil - Checkbox (Staging e DataMart) - TAMANHO: M,Dev Fullstack,Dev 13,4.0,06/05/2026,11/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 83],83,QFS Brasil - Checkbox (Analytics) - TAMANHO: M,Dev Fullstack,Dev 3,4.0,07/05/2026,12/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 84],84,QFS Brasil - Verbatim e Canceled (Staging e DataMart) - TAMANHO: G,Dev Fullstack,Dev 14,9.0,07/05/2026,19/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 85],85,QFS Brasil - KPIs e Logs - TAMANHO: M,Dev Fullstack,Dev 6,6.0,08/05/2026,15/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 86],86,QFS Argentina - Metadata e Population (Staging e DataMart) - TAMANHO: M,Dev Fullstack,Dev 18,8.0,08/05/2026,19/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 87],87,QFS Argentina - Respondent (Staging e DataMart) - TAMANHO: M,Dev Fullstack,Dev 2,4.0,11/05/2026,14/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 88],88,QFS Argentina - Respondent (Analytics) - TAMANHO: M,Dev Fullstack,Dev 7,4.0,11/05/2026,14/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 89],89,QFS Argentina - Checkbox (Staging e DataMart) - TAMANHO: M,Dev Fullstack,Dev 17,4.0,11/05/2026,14/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 90],90,QFS Argentina - Checkbox (Analytics) - TAMANHO: M,Dev Fullstack,Dev 1,4.0,12/05/2026,15/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 91],91,QFS Argentina - Verbatim e Canceled - TAMANHO: G,Dev Fullstack,Dev 5,9.0,12/05/2026,22/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 92],92,QFS Global - Analytics Restricted e Population - TAMANHO: M,Dev Fullstack,Dev 9,5.0,12/05/2026,18/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 93],93,QFS Global - Analytics - TAMANHO: M,Dev Fullstack,Dev 10,4.0,12/05/2026,15/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 94],94,QFS Legacy - Dashboards e Atributos - TAMANHO: M,Dev Fullstack,Dev 11,6.0,12/05/2026,19/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 95],95,QFS Legacy - Base - TAMANHO: M,Dev Fullstack,Dev 12,4.0,12/05/2026,15/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 96],96,QFS Legacy - Testes e Logs - TAMANHO: M,Dev Fullstack,Dev 13,4.0,12/05/2026,15/05/2026
+Squad 6,COMERCIAL,[COMERCIAL - 97],97,Entidade: Sigma - TAMANHO: P,Dev Fullstack,Dev 15,1.0,12/05/2026,12/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 1],1,Entidade: Movimentos FAASA - Plantas 6.21 e 6.22 - TAMANHO: M,Dev Fullstack,Dev 1,6.0,23/03/2026,30/03/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 2],2,"Entidade: Movimentos Contábeis - Parte 1: Plantas FAASA, CKD e FIASA - TAMANHO: P",Dev Fullstack,Dev 1,3.0,31/03/2026,02/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 3],3,"Entidade: Movimentos Contábeis - Parte 2: Plantas FIRE, JEEP e Mecânica - TAMANHO: M",Dev Fullstack,Dev 2,5.0,01/04/2026,07/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 4],4,"Entidade: Posições de Estoque - Parte 1: Plantas JEEP, FAASA e FIASA - TAMANHO: P",Dev Fullstack,Dev 3,3.0,01/04/2026,03/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 5],5,Entidade: Posições de Estoque - Parte 2: Plantas FIRE e Mecânica - TAMANHO: M,Dev Fullstack,Dev 4,4.0,01/04/2026,06/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 6],6,Entidade: Cadastros e Pedidos Especiais - TAMANHO: M,Dev Fullstack,Dev 5,9.0,01/04/2026,13/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 7],7,Entidade: Notas Fiscais de Entrada - TAMANHO: M,Dev Fullstack,Dev 6,5.0,01/04/2026,07/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 8],8,Entidade: Tabelas Mestres - Áreas e Localizações - TAMANHO: M,Dev Fullstack,Dev 7,8.0,01/04/2026,10/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 9],9,Entidade: Views Dimensão - Compartimentos e Unidades - TAMANHO: M,Dev Fullstack,Dev 8,4.0,01/04/2026,06/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 10],10,"Entidade: Etiquetas CIM - Parte 1: Plantas FIAPE, FIASA e Mecânica - TAMANHO: P",Dev Fullstack,Dev 9,4.0,01/04/2026,06/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 11],11,Entidade: Etiquetas CIM - Parte 2: Plantas FIRE e FAASA - TAMANHO: P,Dev Fullstack,Dev 10,4.0,01/04/2026,06/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 12],12,Entidade: Estoque por Desenho - Parte 1: FIASA Histórico e Current - TAMANHO: M,Dev Fullstack,Dev 1,4.0,03/04/2026,08/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 13],13,Entidade: Estoque por Desenho - Parte 2: FIAPE Histórico e Current - TAMANHO: M,Dev Fullstack,Dev 3,2.0,06/04/2026,07/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 14],14,Entidade: Estoque por Desenho - Parte 3: FAASA Histórico e Current - TAMANHO: M,Dev Fullstack,Dev 4,2.0,07/04/2026,08/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 15],15,Entidade: Estoque por Desenho - Parte 4: FIRE e Mecânica - TAMANHO: M,Dev Fullstack,Dev 8,4.0,07/04/2026,10/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 16],16,Entidade: Tabelas Auxiliares e Views Complementares - TAMANHO: G,Dev Fullstack,Dev 9,9.0,07/04/2026,17/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 17],17,Entidade: Rotas e Destinos Logísticos - TAMANHO: G,Dev Fullstack,Dev 10,10.0,07/04/2026,20/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 18],18,Entidade: Pedidos Logísticos e Itens - TAMANHO: G,Dev Fullstack,Dev 2,10.0,08/04/2026,21/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 19],19,Entidade: Inventário - Cabeçalho e Lotes - TAMANHO: G,Dev Fullstack,Dev 3,8.0,08/04/2026,17/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 20],20,Entidade: Inventário - Itens e Leituras - TAMANHO: G,Dev Fullstack,Dev 6,8.0,08/04/2026,17/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 21],21,Entidade: Recebimento e Transmissões - TAMANHO: G,Dev Fullstack,Dev 1,8.0,09/04/2026,20/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 22],22,Entidade: Conferência Física e MDR Part Number - TAMANHO: G,Dev Fullstack,Dev 4,8.0,09/04/2026,20/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 23],23,Entidade: Volumes de Expedição - TAMANHO: M,Dev Fullstack,Dev 7,4.0,13/04/2026,16/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 24],24,Entidade: QRCode e Repicking - TAMANHO: G,Dev Fullstack,Dev 8,8.0,13/04/2026,22/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 25],25,Entidade: Troca de Locação - TAMANHO: G,Dev Fullstack,Dev 5,8.0,14/04/2026,23/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 26],26,Entidade: Estado dos Conjuntos (SSOLQ051) - TAMANHO: P,Dev Fullstack,Dev 7,3.0,17/04/2026,21/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 27],27,"Entidade: Cadastros Eventuais e Anagrafica (SSOLQ057, SSOLQ060, SSDCE001) - TAMANHO: G",Dev Fullstack,Dev 3,9.0,20/04/2026,30/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 28],28,Entidade: Cadastro de Desenhos por Estabelecimento (SSOLQ068) - TAMANHO: M,Dev Fullstack,Dev 6,4.0,20/04/2026,23/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 29],29,"Entidade: Ordens e Características por Trecho (SSOLQ072, SSOLQ073, SSOLQ077) - TAMANHO: G",Dev Fullstack,Dev 9,9.0,20/04/2026,30/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 30],30,Entidade: Giro Diário de Consumo de Peças (SSOLQ110) - TAMANHO: M,Dev Fullstack,Dev 1,7.0,21/04/2026,29/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 31],31,Entidade: Giro Mensal de Consumo de Peças (SSOLQ130) - TAMANHO: G,Dev Fullstack,Dev 4,8.0,21/04/2026,30/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 32],32,Entidade: Consumos S-1 e Necessidades Brutas (SSOLQ134) - TAMANHO: P,Dev Fullstack,Dev 10,3.0,21/04/2026,23/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 33],33,"Entidade: Produtos Acabados e Desenhos - Carga Diária (SSOLQ144, SSOLQ145) - TAMANHO: G",Dev Fullstack,Dev 2,10.0,22/04/2026,05/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 34],34,"Entidade: Produtos Acabados e Desenhos - Carga Mensal (SSOLQ146, SSOLQ147) - TAMANHO: G",Dev Fullstack,Dev 7,8.0,22/04/2026,01/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 35],35,Entidade: Desenhos Calculados por Seção (SSOLQ150) - TAMANHO: P,Dev Fullstack,Dev 8,6.0,23/04/2026,30/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 36],36,"Entidade: Data Mestre e Números de Peça (SSOLQ500, SSOLQ501) - TAMANHO: G",Dev Fullstack,Dev 5,10.0,24/04/2026,07/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 37],37,Entidade: Dimensões Básicas de Estoque - TAMANHO: P,Dev Fullstack,Dev 6,3.0,24/04/2026,28/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 38],38,Entidade: Indicadores e Causal - TAMANHO: P,Dev Fullstack,Dev 10,2.0,24/04/2026,27/04/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 39],39,Entidade: Staging - Dados Brutos SAP e IMS - TAMANHO: M,Dev Fullstack,Dev 10,4.0,28/04/2026,01/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 40],40,Entidade: Estoque Material e Saldo SAP - TAMANHO: M,Dev Fullstack,Dev 6,6.0,29/04/2026,06/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 41],41,Entidade: Apontamentos e Material em Trânsito - TAMANHO: M,Dev Fullstack,Dev 1,6.0,30/04/2026,07/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 42],42,Entidade: Estoque Viajante e Views Consolidadas - TAMANHO: P,Dev Fullstack,Dev 3,3.0,01/05/2026,05/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 43],43,"Entidade: Cadastros Base - Incoterms, Meios de Transporte e Saturação - TAMANHO: P",Dev Fullstack,Dev 4,3.0,01/05/2026,05/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 44],44,Entidade: Transporte e Frete - Staging e Consolidação - TAMANHO: M,Dev Fullstack,Dev 8,5.0,01/05/2026,07/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 45],45,Entidade: Estoque de Embalagens Retornáveis - TAMANHO: P,Dev Fullstack,Dev 9,2.0,01/05/2026,04/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 46],46,Entidade: Itens de Nota Fiscal e Movimentação - TAMANHO: M,Dev Fullstack,Dev 7,5.0,04/05/2026,08/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 47],47,Entidade: Ingestão TM1 - Tabelas Auxiliares e Produto - TAMANHO: M,Dev Fullstack,Dev 10,6.0,04/05/2026,11/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 48],48,Entidade: Ingestão RTM e LTP - Event-Driven - TAMANHO: M,Dev Fullstack,Dev 9,6.0,05/05/2026,12/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 49],49,Entidade: Ingestão Part Dump A9 - Orchestrated DataStage - TAMANHO: M,Dev Fullstack,Dev 2,4.0,06/05/2026,11/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 50],50,Entidade: Ingestão Flow - Parte 1 (Cálculo Previsional e CBA) - TAMANHO: G,Dev Fullstack,Dev 3,8.0,06/05/2026,15/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 51],51,Entidade: Ingestão Flow - Parte 2 (CBH e Months Rolling) - TAMANHO: G,Dev Fullstack,Dev 4,8.0,06/05/2026,15/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 52],52,Entidade: Ingestão Flow - Parte 3 (Cadastros Auxiliares e Logistics) - TAMANHO: M,Dev Fullstack,Dev 6,4.0,07/05/2026,12/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 53],53,Entidade: Views Consolidadas e Analíticas Avançadas - TAMANHO: P,Dev Fullstack,Dev 1,3.0,08/05/2026,12/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 54],54,Entidade: Ativação de Transporte DHL - TAMANHO: M,Dev Fullstack,Dev 5,4.0,08/05/2026,13/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 55],55,Entidade: Ativação e Aprovação AVA SPOT - TAMANHO: M,Dev Fullstack,Dev 8,4.0,08/05/2026,13/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 56],56,Entidade: Yard Truck - Movimentação de Veículos - TAMANHO: P,Dev Fullstack,Dev 7,2.0,11/05/2026,12/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 57],57,Entidade: Rastreamento Real-Time via Pub/Sub - TAMANHO: M,Dev Fullstack,Dev 2,6.0,12/05/2026,19/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 58],58,Entidade: Outbound Transporte Batch via DataStage - TAMANHO: P,Dev Fullstack,Dev 10,3.0,12/05/2026,14/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 59],59,Entidade: Processamento Delta Chegadas e Views Especializadas - TAMANHO: M,Dev Fullstack,Dev 1,4.0,13/05/2026,18/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 60],60,Entidade: Carga Base RapidResponse - Hierarquias e Descrições - TAMANHO: G,Dev Fullstack,Dev 6,10.0,13/05/2026,26/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 61],61,Entidade: Cadastros de Canais e Subcanais - TAMANHO: M,Dev Fullstack,Dev 7,4.0,13/05/2026,18/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 62],62,"Entidade: Planejamento Operacional - Parte 1 (OSS, PSA, Confirmado) - TAMANHO: G",Dev Fullstack,Dev 9,9.0,13/05/2026,25/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 63],63,Entidade: Planejamento Operacional - Parte 2 (Geral e Volume Indústria) - TAMANHO: M,Dev Fullstack,Dev 5,6.0,14/05/2026,21/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 64],64,Entidade: Planejamento Assegnazione e Emplacamento - TAMANHO: M,Dev Fullstack,Dev 8,6.0,14/05/2026,21/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 65],65,Entidade: Lista Mestre Pokey e Produto A13 - TAMANHO: M,Dev Fullstack,Dev 10,6.0,15/05/2026,22/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 66],66,Entidade: Dados Atuais e Emissão CO2 - Export Files - TAMANHO: M,Dev Fullstack,Dev 3,6.0,18/05/2026,25/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 67],67,Entidade: Comprovação Eletrônica de Entrega - EPOD Completo - TAMANHO: G,Dev Fullstack,Dev 4,9.0,18/05/2026,28/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 68],68,Entidade: Ingestão de Dados Base - Volume Accuracy - TAMANHO: M,Dev Fullstack,Dev 1,8.0,19/05/2026,28/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 69],69,Entidade: Processamento Final - Cálculo de Mix e Volume Accuracy - TAMANHO: P,Dev Fullstack,Dev 7,2.0,19/05/2026,20/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 70],70,Entidade: External Tables Google Sheets - Mapeamentos De-Para Parte 1 - TAMANHO: G,Dev Fullstack,Dev 2,10.0,20/05/2026,02/06/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 71],71,Entidade: External Tables Google Sheets - Histórico e Volumes Globais - TAMANHO: G,Dev Fullstack,Dev 7,10.0,21/05/2026,03/06/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 72],72,Entidade: Carga Física De-Para e Mapeamentos - TAMANHO: M,Dev Fullstack,Dev 5,5.0,22/05/2026,28/05/2026
+Squad 5,SUPPLY CHAIN,[SUPPLY CHAIN - 73],73,Entidade: Carga Física Delivery EMEA e NAFTA - TAMANHO: M,Dev Fullstack,Dev 8,4.0,22/05/2026,27/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 74],74,"Entidade: Carga Física Stocks - Dealer, OEM e Viajantes - TAMANHO: M",Dev Fullstack,Dev 3,5.0,22/05/2026,28/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 75],75,Entidade: Carga Física Retail e Volume Argentina - TAMANHO: P,Dev Fullstack,Dev 4,3.0,22/05/2026,26/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 76],76,Entidade: Carga Física Wholesales e Planejamento - TAMANHO: M,Dev Fullstack,Dev 15,5.0,22/05/2026,28/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 77],77,Entidade: Consolidação Principal - tb_actual e View Base - TAMANHO: P,Dev Fullstack,Dev 16,2.0,22/05/2026,25/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 78],78,Entidade: Wholesales NAFTA ROL - Carga Delta e Views - TAMANHO: P,Dev Fullstack,Dev 19,3.0,22/05/2026,26/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 79],79,Entidade: Views Planejamento - Budget Forecast e Estimativas - TAMANHO: M,Dev Fullstack,Dev 20,5.0,22/05/2026,28/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 80],80,Entidade: Views NAFTA - Dimensões Veículos e Produtos - TAMANHO: M,Dev Fullstack,Dev 8,4.0,22/05/2026,27/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 81],81,Entidade: Stock History Regional - TAMANHO: M,Dev Fullstack,Dev 2,5.0,22/05/2026,28/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 82],82,Entidade: Eventos e Pedidos Comerciais - TAMANHO: P,Dev Fullstack,Dev 7,2.0,22/05/2026,25/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 83],83,Entidade: Indicadores FCO - TAMANHO: M,Dev Fullstack,Dev 17,4.0,22/05/2026,27/05/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 84],84,Entidade: Estoque OEM e Dealer - TAMANHO: G,Dev Fullstack,Dev 1,7.0,22/05/2026,01/06/2026
+Squad 6,SUPPLY CHAIN,[SUPPLY CHAIN - 85],85,Entidade: KPIs de Vendas e Produção - TAMANHO: M,Dev Fullstack,Dev 6,4.0,22/05/2026,27/05/2026
