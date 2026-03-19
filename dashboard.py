@@ -7,12 +7,126 @@ from datetime import datetime
 import os
 from pandas.errors import ParserError
 
+# Obter o diretório do script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Configuração da página
 st.set_page_config(
     page_title="Dashboard Jira - Subtarefas",
     page_icon="📊",
     layout="wide"
 )
+
+# Seletor de tema na sidebar (no topo)
+st.sidebar.markdown("### ⚙️ Configurações")
+tema_selecionado = st.sidebar.radio("Tema:", ["🌙 Escuro", "☀️ Claro"], index=0, horizontal=True)
+plotly_template = "plotly_white" if tema_selecionado == "☀️ Claro" else "plotly_dark"
+plotly_font_color = "#1f1f1f" if tema_selecionado == "☀️ Claro" else "#ffffff"
+plotly_paper_bgcolor = "#ffffff" if tema_selecionado == "☀️ Claro" else None
+plotly_plot_bgcolor = "#ffffff" if tema_selecionado == "☀️ Claro" else None
+plotly_axis_style = dict(
+    tickfont=dict(color="#1f1f1f"),
+    title_font=dict(color="#1f1f1f"),
+    linecolor="#cccccc",
+    gridcolor="#e0e0e0"
+) if tema_selecionado == "☀️ Claro" else {}
+
+# Aplicar CSS customizado baseado no tema
+if tema_selecionado == "☀️ Claro":
+    st.markdown("""
+    <style>
+        /* Tema Claro - Fundo geral */
+        .stApp {
+            background-color: #f5f5f5 !important;
+            color: #1f1f1f !important;
+        }
+        /* Textos gerais */
+        .stMarkdown, .stText, p, h1, h2, h3, h4, h5, h6, label {
+            color: #1f1f1f !important;
+        }
+        /* Sidebar */
+        [data-testid="stSidebar"] {
+            background-color: #ffffff !important;
+        }
+        [data-testid="stSidebar"] * {
+            color: #1f1f1f !important;
+        }
+        /* Selectbox / dropdowns */
+        [data-testid="stSelectbox"] > div > div,
+        [data-baseweb="select"] > div,
+        [data-baseweb="popover"] {
+            background-color: #ffffff !important;
+            color: #1f1f1f !important;
+            border-color: #cccccc !important;
+        }
+        [data-baseweb="select"] span,
+        [data-baseweb="select"] div {
+            color: #1f1f1f !important;
+            background-color: #ffffff !important;
+        }
+        /* Opções do dropdown aberto */
+        [data-baseweb="menu"],
+        [data-baseweb="menu"] ul,
+        [data-baseweb="menu"] li {
+            background-color: #ffffff !important;
+            color: #1f1f1f !important;
+        }
+        [data-baseweb="menu"] li:hover {
+            background-color: #e8f0fe !important;
+        }
+        /* Radio buttons */
+        [data-testid="stRadio"] label {
+            color: #1f1f1f !important;
+        }
+        /* Métricas */
+        .stMetric label {
+            color: #555555 !important;
+        }
+        .stMetric [data-testid="stMetricValue"] {
+            color: #1f1f1f !important;
+        }
+        /* Dataframe / tabelas - wrapper externo */
+        [data-testid="stDataFrame"] {
+            background-color: #ffffff !important;
+        }
+        /* Forçar fundo branco no elemento raiz do glide-data-grid */
+        [data-testid="stDataFrame"] > div > div {
+            background-color: #ffffff !important;
+        }
+        /* Scrollbar e container interno */
+        .stDataFrameResizable,
+        [data-testid="stDataFrame"] [class*="wrapper"],
+        [data-testid="stDataFrame"] [class*="container"] {
+            background-color: #ffffff !important;
+        }
+        /* Checkbox */
+        [data-testid="stCheckbox"] label {
+            color: #1f1f1f !important;
+        }
+        /* Info/success boxes */
+        [data-testid="stAlert"] {
+            background-color: #e8f0fe !important;
+            color: #1f1f1f !important;
+        }
+        /* Subheaders */
+        [data-testid="stHeadingWithActionElements"] h2,
+        [data-testid="stHeadingWithActionElements"] h3 {
+            color: #1f1f1f !important;
+        }
+        /* Barra superior (toolbar/header do Streamlit) */
+        header[data-testid="stHeader"],
+        [data-testid="stToolbar"],
+        .stAppHeader {
+            background-color: #ffffff !important;
+        }
+        /* Textos na barra superior - sem forçar fill para não quebrar ícones SVG */
+        header[data-testid="stHeader"] span,
+        header[data-testid="stHeader"] p,
+        header[data-testid="stHeader"] a {
+            color: #1f1f1f !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
 
 # Título principal
 st.markdown("""
@@ -21,6 +135,10 @@ st.markdown("""
     <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0;">Dashboard de Subtarefas - Jira</p>
 </div>
 """, unsafe_allow_html=True)
+
+# Data de atualização
+st.markdown(f"**📅 Atualizado em:** {datetime.now().strftime('%d/%m/%Y %H:%M:%S')} | **Fase:** FASE 3")
+st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
 
 # Função para carregar dados
 def carregar_dados(arquivo):
@@ -65,24 +183,8 @@ def carregar_dados(arquivo):
             return df
     return None
 
-# Selecionar arquivo na sidebar
-st.sidebar.header("Arquivo de Dados")
-
-# Mapeamento de exibição para arquivo
-fases_disponiveis = {
-    "FASE 3": "FASE 3.csv",
-    "FASE 2": "FASE 2.csv"
-}
-
-fase_selecionada = st.sidebar.selectbox(
-    "Selecione a Fase:",
-    options=list(fases_disponiveis.keys()),
-    index=0,
-    key="arquivo_selector"
-)
-
-# Obter o nome do arquivo real
-arquivo_selecionado = fases_disponiveis[fase_selecionada]
+# Carregar arquivo FASE 3
+arquivo_selecionado = os.path.join(SCRIPT_DIR, "FASE_3.csv")
 
 df = carregar_dados(arquivo_selecionado)
 
@@ -92,11 +194,12 @@ if df is None:
     st.stop()
 
 # Filtros na sidebar
-st.sidebar.header("Filtros")
+st.sidebar.markdown("---")
+st.sidebar.header("🔍 Filtros")
 
 # Filtro por Data-Lake
-data_lakes_unicos = ['Todas'] + sorted([d for d in df['Data-Lake'].unique() if d != 'N/A'])
-data_lake_selecionado = st.sidebar.selectbox("Data-Lake:", data_lakes_unicos)
+data_lakes_unicos = ['Todas'] + sorted([str(d) for d in df['Data-Lake'].unique() if pd.notna(d) and str(d) != 'N/A'])
+data_lake_selecionado = st.sidebar.selectbox("Data-Lake:", data_lakes_unicos, index=0)
 
 # Aplicar filtro de Data-Lake primeiro
 df_filtrado = df.copy()
@@ -104,7 +207,7 @@ if data_lake_selecionado != 'Todas':
     df_filtrado = df_filtrado[df_filtrado['Data-Lake'] == data_lake_selecionado]
 
 # Filtro por História (usando título) - baseado no filtro de Data-Lake
-historias_unicas = ['Todas'] + sorted(df_filtrado['Titulo Historia'].unique().tolist())
+historias_unicas = ['Todas'] + sorted([str(h) for h in df_filtrado['Titulo Historia'].unique() if pd.notna(h)])
 historia_selecionada = st.sidebar.selectbox("História:", historias_unicas)
 
 # Aplicar filtro de História
@@ -112,7 +215,7 @@ if historia_selecionada != 'Todas':
     df_filtrado = df_filtrado[df_filtrado['Titulo Historia'] == historia_selecionada]
 
 # Filtro por Categoria - baseado nos filtros anteriores
-categorias_unicas = ['Todas'] + sorted(df_filtrado['Categoria_Analise'].unique().tolist())
+categorias_unicas = ['Todas'] + sorted([str(c) for c in df_filtrado['Categoria_Analise'].unique() if pd.notna(c)])
 categoria_selecionada = st.sidebar.selectbox("Categoria:", categorias_unicas)
 
 # Aplicar filtro de Categoria
@@ -186,7 +289,7 @@ except Exception as e:
 # =====================
 # Gráfico de Burn-out semanal (Planejado vs Real)
 # =====================
-df_lake = pd.read_csv('datas_esperadas_por_lake.csv', encoding='utf-8-sig', sep=',')
+df_lake = pd.read_csv(os.path.join(SCRIPT_DIR, 'datas_esperadas_por_lake.csv'), encoding='utf-8-sig', sep=',')
 
 def normalizar_id_historia(valor):
     if pd.isna(valor):
@@ -415,11 +518,13 @@ fig_burn.update_layout(
     yaxis_title='Historias acumuladas',
     legend_title='Legenda',
     height=350,
-    template='plotly_white',
-    xaxis=dict(
-        tickformat='%d/%m/%Y',
-        range=xaxis_range
-    )
+    template=plotly_template,
+    paper_bgcolor=plotly_paper_bgcolor,
+    plot_bgcolor=plotly_plot_bgcolor,
+    font=dict(color=plotly_font_color),
+    xaxis=dict(tickformat='%d/%m/%Y', range=xaxis_range, **plotly_axis_style),
+    yaxis=dict(**plotly_axis_style),
+    legend=dict(font=dict(color=plotly_font_color))
 )
 st.plotly_chart(fig_burn, use_container_width=True)
 
@@ -567,7 +672,12 @@ with col_graf1:
         hole=0.4,
         color_discrete_sequence=px.colors.sequential.Blues_r
     )
-    fig_status.update_layout(height=300)
+    fig_status.update_layout(
+        height=300,
+        template=plotly_template,
+        paper_bgcolor=plotly_paper_bgcolor,
+        font=dict(color=plotly_font_color)
+    )
     st.plotly_chart(fig_status, use_container_width=True)
 
 with col_graf2:
@@ -597,7 +707,12 @@ with col_graf2:
             }
         }
     ))
-    fig_progress.update_layout(height=300)
+    fig_progress.update_layout(
+        height=300,
+        template=plotly_template,
+        paper_bgcolor=plotly_paper_bgcolor,
+        font=dict(color=plotly_font_color)
+    )
     st.plotly_chart(fig_progress, use_container_width=True)
 
 # Segunda linha de gráficos
@@ -616,7 +731,16 @@ with col_graf3:
         color='Quantidade',
         color_continuous_scale='Blues'
     )
-    fig_categoria.update_layout(height=300, showlegend=False)
+    fig_categoria.update_layout(
+        height=300,
+        showlegend=False,
+        template=plotly_template,
+        paper_bgcolor=plotly_paper_bgcolor,
+        plot_bgcolor=plotly_plot_bgcolor,
+        font=dict(color=plotly_font_color),
+        xaxis=dict(**plotly_axis_style),
+        yaxis=dict(**plotly_axis_style)
+    )
     st.plotly_chart(fig_categoria, use_container_width=True)
 
 with col_graf4:
@@ -632,7 +756,16 @@ with col_graf4:
         color='Quantidade',
         color_continuous_scale='Teal'
     )
-    fig_data_lake.update_layout(height=300, showlegend=False)
+    fig_data_lake.update_layout(
+        height=300,
+        showlegend=False,
+        template=plotly_template,
+        paper_bgcolor=plotly_paper_bgcolor,
+        plot_bgcolor=plotly_plot_bgcolor,
+        font=dict(color=plotly_font_color),
+        xaxis=dict(**plotly_axis_style),
+        yaxis=dict(**plotly_axis_style)
+    )
     st.plotly_chart(fig_data_lake, use_container_width=True)
 
 st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
@@ -663,7 +796,16 @@ if issues_abertos_1_semana > 0 and not df_criticos.empty:
             color_continuous_scale='Reds',
             text='Quantidade'
         )
-        fig_critico.update_layout(height=250, showlegend=False)
+        fig_critico.update_layout(
+            height=250,
+            showlegend=False,
+            template=plotly_template,
+            paper_bgcolor=plotly_paper_bgcolor,
+            plot_bgcolor=plotly_plot_bgcolor,
+            font=dict(color=plotly_font_color),
+            xaxis=dict(**plotly_axis_style),
+            yaxis=dict(**plotly_axis_style)
+        )
         fig_critico.update_traces(textposition='outside')
         st.plotly_chart(fig_critico, use_container_width=True)
     
@@ -671,11 +813,29 @@ if issues_abertos_1_semana > 0 and not df_criticos.empty:
         st.write("**Detalhes dos Issues**")
         # Mostrar tabela com informações relevantes
         colunas_criticos = ['Chave', 'Titulo Historia', 'Data-Lake', 'Titulo', 'Status', 'Categoria_Analise', 'Dias_Aberto']
-        st.dataframe(
-            df_criticos_exibir[colunas_criticos],
-            use_container_width=True,
-            height=250
-        )
+        if tema_selecionado == "☀️ Claro":
+            df_crit_show = df_criticos_exibir[colunas_criticos]
+            html = '<div style="overflow-x:auto; overflow-y:auto; max-height:250px;">'
+            html += '<table style="width:100%; border-collapse:collapse; font-size:13px; background:#fff; color:#1f1f1f;">'
+            html += '<thead><tr style="background:#e8e8e8; position:sticky; top:0;">'
+            for col in df_crit_show.columns:
+                html += f'<th style="padding:6px 8px; text-align:left; border-bottom:1px solid #ccc; white-space:nowrap; color:#1f1f1f;">{col}</th>'
+            html += '</tr></thead><tbody>'
+            for idx_c, (_, row) in enumerate(df_crit_show.iterrows()):
+                bg_row = '#ffffff' if idx_c % 2 == 0 else '#f9f9f9'
+                html += f'<tr style="background:{bg_row};">'
+                for col in df_crit_show.columns:
+                    val = str(row[col]) if pd.notna(row[col]) else ''
+                    html += f'<td style="padding:5px 8px; border-bottom:1px solid #eee; color:#1f1f1f; white-space:nowrap;">{val}</td>'
+                html += '</tr>'
+            html += '</tbody></table></div>'
+            st.markdown(html, unsafe_allow_html=True)
+        else:
+            st.dataframe(
+                df_criticos_exibir[colunas_criticos],
+                use_container_width=True,
+                height=250
+            )
 else:
     st.success("Nenhum issue critico aberto ha mais de 1 semana!")
 
@@ -704,19 +864,46 @@ def colorir_status(val):
     }
     return cores_status.get(val, '')
 
+def renderizar_tabela(df_render, tema):
+    if tema == "☀️ Claro":
+        cores_status_html = {
+            'Done': '#90EE90', 'Closed': '#90EE90', 'Resolved': '#90EE90',
+            'Concluído': '#90EE90', 'Concluida': '#90EE90',
+            'In Progress': '#87CEEB', 'To Do': '#FFE4B5', 'Backlog': '#D3D3D3',
+            'Canceled': '#FFD700', 'Cancelled': '#FFD700', 'Cancelado': '#FFD700'
+        }
+        html = '<div style="overflow-x:auto; overflow-y:auto; max-height:300px;">'
+        html += '<table style="width:100%; border-collapse:collapse; font-size:13px; background:#fff; color:#1f1f1f;">'
+        html += '<thead><tr style="background:#e8e8e8; position:sticky; top:0;">'
+        for col in df_render.columns:
+            html += f'<th style="padding:6px 8px; text-align:left; border-bottom:1px solid #ccc; white-space:nowrap; color:#1f1f1f;">{col}</th>'
+        html += '</tr></thead><tbody>'
+        for idx_r, (i, row) in enumerate(df_render.iterrows()):
+            bg_row = '#ffffff' if idx_r % 2 == 0 else '#f9f9f9'
+            html += f'<tr style="background:{bg_row};">'
+            for col in df_render.columns:
+                val = str(row[col]) if pd.notna(row[col]) else ''
+                if col == 'Status':
+                    cor = cores_status_html.get(val, 'transparent')
+                    html += f'<td style="padding:5px 8px; border-bottom:1px solid #eee; background:{cor}; color:#1f1f1f; white-space:nowrap;">{val}</td>'
+                else:
+                    html += f'<td style="padding:5px 8px; border-bottom:1px solid #eee; color:#1f1f1f;">{val}</td>'
+            html += '</tr>'
+        html += '</tbody></table></div>'
+        st.markdown(html, unsafe_allow_html=True)
+    else:
+        st.dataframe(
+            df_render.style.applymap(colorir_status, subset=['Status']),
+            use_container_width=True,
+            height=300
+        )
+
 if exibir_todas:
-    st.dataframe(
-        df_filtrado.style.applymap(colorir_status, subset=['Status']),
-        use_container_width=True,
-        height=300
-    )
+    colunas_todas = ['Data-Lake', 'Historia'] + [c for c in df_filtrado.columns if c not in ['Data-Lake', 'Historia']]
+    renderizar_tabela(df_filtrado[colunas_todas].sort_index(ascending=False), tema_selecionado)
 else:
-    colunas_resumo = ['Historia', 'Titulo Historia', 'Data-Lake', 'Chave', 'Titulo', 'Status', 'Categoria_Analise']
-    st.dataframe(
-        df_filtrado[colunas_resumo].style.applymap(colorir_status, subset=['Status']),
-        use_container_width=True,
-        height=300
-    )
+    colunas_resumo = ['Data-Lake', 'Historia', 'Titulo Historia', 'Chave', 'Titulo', 'Status', 'Categoria_Analise']
+    renderizar_tabela(df_filtrado[colunas_resumo].sort_index(ascending=False), tema_selecionado)
 
 # Estatísticas adicionais
 st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
@@ -738,6 +925,4 @@ with col_stat2:
         value=rn_total
     )
 
-# Footer
-st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
-st.caption("Projeto Migração Stellantis | Atualizado: " + datetime.now().strftime("%d/%m/%Y %H:%M:%S") + f" | {fase_selecionada}")
+
