@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import os
 from pandas.errors import ParserError
 
@@ -136,8 +136,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Data de atualização
-st.markdown(f"**📅 Atualizado em:** {datetime.now().strftime('%d/%m/%Y %H:%M:%S')} | **Fase:** FASE 3")
+# Data de atualização (UTC-3 = horário de Brasília)
+brt_time = datetime.now(timezone(timedelta(hours=-3)))
+st.markdown(f"**📅 Atualizado em:** {brt_time.strftime('%d/%m/%Y %H:%M:%S')} | **Fase:** FASE 3")
 st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
 
 # Função para carregar dados
