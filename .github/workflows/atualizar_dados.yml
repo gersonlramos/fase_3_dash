@@ -1,0 +1,38 @@
+name: Atualizar Dados Jira
+
+on:
+  schedule:
+    - cron: '0 8 * * 1-5'   # 08:00 UTC (05:00 BRT)
+    - cron: '0 13 * * 1-5'  # 13:00 UTC (10:00 BRT)
+    - cron: '0 19 * * 1-5'  # 19:00 UTC (16:00 BRT)
+  workflow_dispatch:  # permite rodar manualmente pelo GitHub
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências
+        run: pip install requests pandas python-dotenv
+
+      - name: Executar script de extração
+        env:
+          EMAIL: ${{ secrets.JIRA_EMAIL }}
+          API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: python script_atualizacao.py
+
+      - name: Commit e push dos dados atualizados
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add FASE_3.csv
+          git diff --cached --quiet || git commit -m "chore: atualização automática dos dados Jira"
+          git push
