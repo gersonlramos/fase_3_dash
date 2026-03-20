@@ -2,10 +2,11 @@ name: Atualizar Dados Jira
 
 on:
   schedule:
-    - cron: '0 8 * * 1-5'   # 08:00 UTC (05:00 BRT)
-    - cron: '0 13 * * 1-5'  # 13:00 UTC (10:00 BRT)
-    - cron: '0 19 * * 1-5'  # 19:00 UTC (16:00 BRT)
-  workflow_dispatch:  # permite rodar manualmente pelo GitHub
+    - cron: "0 8 * * 1-5" # 08:00 UTC (05:00 BRT)
+    - cron: "0 13 * * 1-5" # 13:00 UTC (10:00 BRT)
+    - cron: "0 17 * * 1-5" # 17:00 UTC (14:00 BRT)
+    - cron: "0 19 * * 1-5" # 19:00 UTC (16:00 BRT)
+  workflow_dispatch: # permite rodar manualmente pelo GitHub
 
 jobs:
   atualizar:
@@ -18,7 +19,7 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Instalar dependências
         run: pip install requests pandas python-dotenv
