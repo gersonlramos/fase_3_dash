@@ -288,6 +288,30 @@ except Exception as e:
     df_criticos = pd.DataFrame()  # DataFrame vazio em caso de erro
 
 # =====================
+# Função de curva sigmoide para entrega esperada (curva de aprendizado)
+# =====================
+def calcular_curva_aprendizado(data_inicio, data_fim, total, inflexao=0.4, inclinacao=8):
+    """
+    Gera pontos de uma curva sigmoide representando a curva de aprendizado do time.
+    - inflexao: fração do período onde o ritmo acelera (0.4 = 40% do período)
+    - inclinacao: quão abrupta é a transição (k=8 gera curva suave mas perceptível)
+    Fórmula: total / (1 + e^(-k * (t - t_meio)))
+    Normalizada para iniciar em 0 e terminar em total.
+    """
+    if pd.isna(data_inicio) or pd.isna(data_fim) or total <= 0:
+        return [], []
+    datas = pd.date_range(start=data_inicio, end=data_fim, freq='D')
+    n = len(datas)
+    if n < 2:
+        return [data_inicio, data_fim], [0, total]
+    t_meio = inflexao
+    k = inclinacao
+    valores_raw = [1 / (1 + np.exp(-k * (i / (n - 1) - t_meio))) for i in range(n)]
+    v_min, v_max = valores_raw[0], valores_raw[-1]
+    valores_norm = [total * (v - v_min) / (v_max - v_min) for v in valores_raw]
+    return list(datas), valores_norm
+
+# =====================
 # Gráfico de Burn-out semanal (Planejado vs Real)
 # =====================
 df_lake = pd.read_csv(os.path.join(SCRIPT_DIR, 'datas_esperadas_por_lake.csv'), encoding='utf-8-sig', sep=',')
@@ -475,6 +499,17 @@ fig_burn.add_trace(go.Scatter(
     line=dict(color='orange')
 ))
 
+# Linha de entrega esperada com curva de aprendizado (sigmoide)
+_data_ini_burnout = burn['data'].min() if not burn.empty else pd.NaT
+_datas_sig, _valores_sig = calcular_curva_aprendizado(_data_ini_burnout, prazo_final_planejado, total_planejado)
+if len(_datas_sig) > 1:
+    fig_burn.add_trace(go.Scatter(
+        x=_datas_sig, y=_valores_sig,
+        mode='lines', name='Entrega Esperada',
+        line=dict(color='mediumpurple', dash='dash', width=2),
+        opacity=0.8
+    ))
+
 # Adiciona linha de melhor cenário
 if len(datas_proj_melhor) > 1:
     fig_burn.add_trace(go.Scatter(
@@ -518,7 +553,7 @@ fig_burn.update_layout(
     xaxis_title='Data',
     yaxis_title='Historias acumuladas',
     legend_title='Legenda',
-    height=350,
+    height=450,
     template=plotly_template,
     paper_bgcolor=plotly_paper_bgcolor,
     plot_bgcolor=plotly_plot_bgcolor,
@@ -528,6 +563,32 @@ fig_burn.update_layout(
     legend=dict(font=dict(color=plotly_font_color))
 )
 st.plotly_chart(fig_burn, use_container_width=True)
+
+with st.expander("ℹ️ Como são calculadas as linhas deste gráfico?"):
+    st.markdown("""
+**Planejado**
+Soma cumulativa de histórias por `data_fim` prevista no arquivo de datas esperadas por lake.
+
+**Realizado**
+Cada subtarefa concluída (`Done`, `Canceled`, etc.) contribui com uma fração da sua história (1 / total de subtarefas da história). A linha representa o progresso parcial acumulado dia a dia.
+
+**Entrega Esperada** *(curva roxa tracejada)*
+Curva sigmoide que simula a curva de aprendizado do time:
+```
+f(t) = total / (1 + e^(-k × (t − t_meio)))   normalizada para [0, total]
+```
+- `t` = posição no período (0 = início, 1 = fim)
+- `t_meio = 0.40` → o time atinge ritmo pleno em ~40% do período
+- `k = 8` → transição moderadamente abrupta
+
+**Projeção (Melhor / Atual / Pior)**
+Regressão linear sobre o realizado parcial acumulado. A partir do último ponto entregue:
+- **Melhor:** ritmo histórico × 1.3 (30% mais rápido)
+- **Atual:** ritmo histórico (coeficiente angular da regressão)
+- **Pior:** ritmo histórico × 0.7 (30% mais lento)
+
+Todas as projeções são limitadas à data final planejada.
+""")
 
 # Indicadores do burn-out
 col_burn1, col_burn2, col_burn3, col_burn4 = st.columns(4)
@@ -607,6 +668,241 @@ with col_burn4:
         delta=delta_txt,
         delta_color=delta_color
     )
+
+# ── BURN-UP POR PONTOS ────────────────────────────────────────────────────────
+st.subheader('Burn-up por Pontos (Planejado x Real)')
+
+# Mapa de pontos por tamanho
+_pontos_tamanho = {'P': 3, 'M': 5, 'G': 8}
+
+# Extrai tamanho e pontos por história única (1 linha por Titulo Historia)
+df_historias_unicas = df_filtrado.drop_duplicates(subset='Titulo Historia').copy()
+df_historias_unicas['_tamanho'] = df_historias_unicas['Titulo Historia'].str.extract(
+    r'TAMANHO:\s*([PGM])', expand=False
+)
+df_historias_unicas['_pontos'] = df_historias_unicas['_tamanho'].map(_pontos_tamanho).fillna(0)
+total_pontos = df_historias_unicas['_pontos'].sum()
+
+# Linha de planejado: acumula pontos por sexta-feira usando data_fim de cada história
+prazo_burnup = lakes_fase['data_fim'].max() if 'data_fim' in lakes_fase.columns and not lakes_fase.empty else pd.NaT
+# Início fixo: primeira sexta a partir de 13/03/2026
+data_inicio_burnup = pd.Timestamp('2026-03-13')
+
+if pd.notna(prazo_burnup) and total_pontos > 0 and 'data_fim' in lakes_fase.columns:
+    _pontos_por_tamanho_plan = {'P': 3, 'M': 5, 'G': 8}
+    lakes_fase['_pontos_plan'] = lakes_fase['titulo'].str.extract(
+        r'TAMANHO:\s*([PGM])', expand=False
+    ).map(_pontos_por_tamanho_plan).fillna(0)
+
+    # Agrupa pontos por data_fim exata e acumula
+    plan_por_data = (
+        lakes_fase.groupby('data_fim')['_pontos_plan']
+        .sum()
+        .reset_index()
+        .sort_values('data_fim')
+    )
+    plan_por_data['pontos_acum'] = plan_por_data['_pontos_plan'].cumsum()
+
+    # Adiciona ponto inicial zerado em 13/03
+    _inicio = pd.DataFrame([{'data_fim': data_inicio_burnup, 'pontos_acum': 0}])
+    plan_por_data = pd.concat([_inicio, plan_por_data], ignore_index=True).sort_values('data_fim')
+
+    datas_plan_bp = list(plan_por_data['data_fim'])
+    valores_plan_bp = list(plan_por_data['pontos_acum'])
+else:
+    datas_plan_bp = []
+    valores_plan_bp = []
+
+# Realizado: história entregue quando TODAS as subtarefas são Done ou Canceled
+status_entregue_bp = {'done', 'closed', 'resolved', 'concluído', 'concluida', 'canceled', 'cancelled'}
+df_bp = df_filtrado.copy()
+df_bp['status_norm_bp'] = df_bp['Status'].astype(str).str.strip().str.lower()
+df_bp['entregue_bp'] = df_bp['status_norm_bp'].isin(status_entregue_bp)
+df_bp['data_atu_bp'] = pd.to_datetime(df_bp['Data Atualizacao'], errors='coerce', utc=True)
+
+# Pontos por história (extraídos do título)
+_mapa_pontos_hist = (
+    df_historias_unicas[['Titulo Historia', '_pontos']]
+    .set_index('Titulo Historia')['_pontos']
+    .to_dict()
+)
+df_bp['_pontos_hist'] = df_bp['Titulo Historia'].map(_mapa_pontos_hist).fillna(0)
+
+# Agrupa por história: entregue = todas subtarefas concluídas
+hist_bp = (
+    df_bp.groupby('Titulo Historia')
+    .agg(
+        historia_entregue=('entregue_bp', 'all'),
+        data_entrega_bp=('data_atu_bp', 'max'),
+        pontos=('_pontos_hist', 'first')
+    )
+    .reset_index()
+)
+hist_bp_entregues = hist_bp[
+    hist_bp['historia_entregue'] & hist_bp['data_entrega_bp'].notna()
+].copy()
+
+if not hist_bp_entregues.empty:
+    hist_bp_entregues['data'] = hist_bp_entregues['data_entrega_bp'].dt.tz_convert(None).dt.normalize()
+    burn_bp_real = (
+        hist_bp_entregues.groupby('data')['pontos']
+        .sum()
+        .reset_index(name='pontos_dia')
+        .sort_values('data')
+    )
+    burn_bp_real['pontos_acum'] = burn_bp_real['pontos_dia'].cumsum()
+    ultima_data_bp = burn_bp_real['data'].max()
+    pontos_entregues = float(burn_bp_real['pontos_acum'].iloc[-1])
+else:
+    burn_bp_real = pd.DataFrame(columns=['data', 'pontos_dia', 'pontos_acum'])
+    ultima_data_bp = pd.NaT
+    pontos_entregues = 0.0
+
+# Projeção a partir do ritmo real (regressão linear semanal)
+datas_proj_bp = []
+valores_proj_bp = []
+datas_proj_bp_melhor = []
+valores_proj_bp_melhor = []
+datas_proj_bp_pior = []
+valores_proj_bp_pior = []
+
+if not burn_bp_real.empty and pontos_entregues > 0 and pd.notna(prazo_burnup) and pontos_entregues < total_pontos:
+    x_bp = np.arange(len(burn_bp_real))
+    y_bp = burn_bp_real['pontos_acum'].values
+    ritmo_bp = float(np.polyfit(x_bp, y_bp, 1)[0]) if len(x_bp) > 1 else float(y_bp[-1])
+    ritmo_bp = max(ritmo_bp, 0.01)
+
+    def _proj_bp(ritmo, prazo):
+        datas, valores = [], []
+        faltam = total_pontos - pontos_entregues
+        dias = int(np.ceil(faltam / ritmo))
+        for i in range(dias + 1):
+            d = ultima_data_bp + pd.Timedelta(days=i)
+            if pd.notna(prazo) and d >= prazo:
+                # Adiciona ponto final exatamente na data limite
+                datas.append(prazo)
+                valores.append(min(pontos_entregues + ritmo * i, total_pontos))
+                break
+            v = pontos_entregues + ritmo * i
+            datas.append(d)
+            valores.append(min(v, total_pontos))
+            if v >= total_pontos:
+                break
+        return datas, valores
+
+    datas_proj_bp, valores_proj_bp = _proj_bp(ritmo_bp, prazo_burnup)
+    datas_proj_bp_melhor, valores_proj_bp_melhor = _proj_bp(ritmo_bp * 1.3, prazo_burnup)
+    datas_proj_bp_pior, valores_proj_bp_pior = _proj_bp(ritmo_bp * 0.7, prazo_burnup)
+
+fig_burnup = go.Figure()
+
+# Planejado
+if len(datas_plan_bp) > 0:
+    fig_burnup.add_trace(go.Scatter(
+        x=list(datas_plan_bp), y=valores_plan_bp,
+        mode='lines+markers', name='Planejado',
+        line=dict(color='royalblue')
+    ))
+
+# Realizado
+if not burn_bp_real.empty:
+    fig_burnup.add_trace(go.Scatter(
+        x=burn_bp_real['data'], y=burn_bp_real['pontos_acum'],
+        mode='lines+markers', name='Realizado',
+        line=dict(color='orange')
+    ))
+
+# Linha de entrega esperada com curva de aprendizado (sigmoide)
+_datas_sig_bp, _valores_sig_bp = calcular_curva_aprendizado(data_inicio_burnup, prazo_burnup, total_pontos)
+if len(_datas_sig_bp) > 1:
+    fig_burnup.add_trace(go.Scatter(
+        x=_datas_sig_bp, y=_valores_sig_bp,
+        mode='lines', name='Entrega Esperada',
+        line=dict(color='mediumpurple', dash='dash', width=2),
+        opacity=0.8
+    ))
+
+# Projeções
+if len(datas_proj_bp_melhor) > 1:
+    fig_burnup.add_trace(go.Scatter(
+        x=datas_proj_bp_melhor, y=valores_proj_bp_melhor,
+        mode='lines', name='Projeção (Melhor)',
+        line=dict(color='green', dash='dash', width=2), opacity=0.6
+    ))
+if len(datas_proj_bp) > 1:
+    fig_burnup.add_trace(go.Scatter(
+        x=datas_proj_bp, y=valores_proj_bp,
+        mode='lines+markers', name='Projeção (Atual)',
+        line=dict(color='red', dash='dot', width=2)
+    ))
+if len(datas_proj_bp_pior) > 1:
+    fig_burnup.add_trace(go.Scatter(
+        x=datas_proj_bp_pior, y=valores_proj_bp_pior,
+        mode='lines', name='Projeção (Pior)',
+        line=dict(color='darkred', dash='dash', width=2), opacity=0.6
+    ))
+
+xaxis_range_bp = [data_inicio_burnup, prazo_burnup] if pd.notna(prazo_burnup) else None
+
+fig_burnup.update_layout(
+    xaxis_title='Data',
+    yaxis_title='Pontos acumulados',
+    legend_title='Legenda',
+    height=450,
+    template=plotly_template,
+    paper_bgcolor=plotly_paper_bgcolor,
+    plot_bgcolor=plotly_plot_bgcolor,
+    font=dict(color=plotly_font_color),
+    xaxis=dict(tickformat='%d/%m/%Y', range=xaxis_range_bp, **plotly_axis_style),
+    yaxis=dict(**plotly_axis_style),
+    legend=dict(font=dict(color=plotly_font_color))
+)
+st.plotly_chart(fig_burnup, use_container_width=True)
+
+with st.expander("ℹ️ Como são calculadas as linhas deste gráfico?"):
+    st.markdown("""
+**Planejado**
+Acumulado de pontos por `data_fim` de cada história no arquivo de datas esperadas.
+Pontuação: P = 3 pts · M = 5 pts · G = 8 pts (extraído do título da história).
+Cada história é contada apenas uma vez (sem duplicar por subtarefa).
+
+**Realizado**
+Uma história é considerada entregue somente quando **todas** as suas subtarefas estão com status `Done` ou `Canceled`.
+Os pontos são creditados na data da última atualização da história.
+
+**Entrega Esperada** *(curva roxa tracejada)*
+Curva sigmoide que simula a curva de aprendizado do time:
+```
+f(t) = total_pontos / (1 + e^(-k × (t − t_meio)))   normalizada para [0, total_pontos]
+```
+- `t` = posição no período (0 = início, 1 = fim)
+- `t_meio = 0.40` → o time atinge ritmo pleno em ~40% do período
+- `k = 8` → transição moderadamente abrupta
+
+**Projeção (Melhor / Atual / Pior)**
+Regressão linear sobre os pontos acumulados entregues. A partir do último ponto entregue:
+- **Melhor:** ritmo histórico × 1.3 (30% mais rápido)
+- **Atual:** ritmo histórico (coeficiente angular da regressão linear)
+- **Pior:** ritmo histórico × 0.7 (30% mais lento)
+
+Todas as projeções são limitadas à data final planejada.
+""")
+
+# KPIs do burn-up por pontos
+col_bp1, col_bp2, col_bp3, col_bp4 = st.columns(4)
+with col_bp1:
+    st.metric("Total de Pontos", int(total_pontos))
+with col_bp2:
+    st.metric("Pontos Entregues", int(pontos_entregues), delta=f"{(pontos_entregues/total_pontos*100):.1f}%" if total_pontos > 0 else None)
+with col_bp3:
+    st.metric("Data Planejada", prazo_burnup.strftime('%d/%m/%Y') if pd.notna(prazo_burnup) else 'N/A')
+with col_bp4:
+    if datas_proj_bp_melhor and datas_proj_bp_pior:
+        _prev_melhor = datas_proj_bp_melhor[-1].strftime('%d/%m')
+        _prev_pior = datas_proj_bp_pior[-1].strftime('%d/%m/%y')
+        st.metric("Previsão (Melhor/Pior)", f"{_prev_melhor} a {_prev_pior}")
+    else:
+        st.metric("Previsão (Melhor/Pior)", 'N/A')
 
 # KPIs principais
 st.subheader("Indicadores Principais")
