@@ -8,6 +8,9 @@ on:
     - cron: "0 19 * * 1-5" # 19:00 UTC (16:00 BRT)
   workflow_dispatch: # permite rodar manualmente pelo GitHub
 
+permissions:
+  contents: write
+
 jobs:
   atualizar:
     runs-on: ubuntu-latest
@@ -15,6 +18,8 @@ jobs:
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configurar Python
         uses: actions/setup-python@v5
