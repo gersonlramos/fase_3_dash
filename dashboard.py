@@ -10,6 +10,27 @@ from pandas.errors import ParserError
 # Obter o diretório do script
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
+def calcular_curva_aprendizado(data_inicio, data_fim, total, inflexao=0.4, inclinacao=8):
+    """
+    Gera pontos de uma curva sigmoide representando a curva de aprendizado do time.
+    - inflexao: fração do período onde o ritmo acelera (0.4 = 40% do período)
+    - inclinacao: quão abrupta é a transição (k=8 gera curva suave mas perceptível)
+    Fórmula: total / (1 + e^(-k * (t - t_meio)))
+    Normalizada para iniciar em 0 e terminar em total.
+    """
+    if pd.isna(data_inicio) or pd.isna(data_fim) or total <= 0:
+        return [], []
+    datas = pd.date_range(start=data_inicio, end=data_fim, freq='D')
+    n = len(datas)
+    if n < 2:
+        return [data_inicio, data_fim], [0, total]
+    t_meio = inflexao
+    k = inclinacao
+    valores_raw = [1 / (1 + np.exp(-k * (i / (n - 1) - t_meio))) for i in range(n)]
+    v_min, v_max = valores_raw[0], valores_raw[-1]
+    valores_norm = [total * (v - v_min) / (v_max - v_min) for v in valores_raw]
+    return list(datas), valores_norm
+
 # Configuração da página
 st.set_page_config(
     page_title="Dashboard Jira - Subtarefas",
@@ -21,7 +42,7 @@ st.set_page_config(
 st.sidebar.markdown("### ⚙️ Configurações")
 tema_selecionado = st.sidebar.radio("Tema:", ["🌙 Escuro", "☀️ Claro"], index=0, horizontal=True)
 plotly_template = "plotly_white" if tema_selecionado == "☀️ Claro" else "plotly_dark"
-plotly_font_color = "#1f1f1f" if tema_selecionado == "☀️ Claro" else "#ffffff"
+plotly_font_color = "#070707" if tema_selecionado == "☀️ Claro" else "#ffffff"
 plotly_paper_bgcolor = "#ffffff" if tema_selecionado == "☀️ Claro" else None
 plotly_plot_bgcolor = "#ffffff" if tema_selecionado == "☀️ Claro" else None
 plotly_axis_style = dict(
@@ -30,6 +51,16 @@ plotly_axis_style = dict(
     linecolor="#cccccc",
     gridcolor="#e0e0e0"
 ) if tema_selecionado == "☀️ Claro" else {}
+
+plotly_legend_style = dict(
+    font=dict(color="#1f1f1f"),
+    title=dict(font=dict(color="#1f1f1f"))
+) if tema_selecionado == "☀️ Claro" else dict(
+    font=dict(color="#ffffff"),
+    title=dict(font=dict(color="#ffffff"))
+)
+
+hr_style = "<hr style='margin: 10px 0; border-color: #1f1f1f;'/>" if tema_selecionado == "☀️ Claro" else "<hr style='margin: 10px 0;'/>"
 
 # Aplicar CSS customizado baseado no tema
 if tema_selecionado == "☀️ Claro":
@@ -132,14 +163,43 @@ if tema_selecionado == "☀️ Claro":
 st.markdown("""
 <div style="text-align: center; background: linear-gradient(90deg, #1f77b4 0%, #2ca02c 100%); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
     <h1 style="color: white; margin: 0;">Projeto Migração Stellantis</h1>
-    <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0;">Dashboard de Subtarefas - Jira</p>
+    <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0 0;">Acompanhamento de Entregas - Fase 3</p>
 </div>
 """, unsafe_allow_html=True)
 
 # Data de atualização (UTC-3 = horário de Brasília)
 brt_time = datetime.now(timezone(timedelta(hours=-3)))
 st.markdown(f"**📅 Atualizado em:** {brt_time.strftime('%d/%m/%Y %H:%M:%S')} | **Fase:** FASE 3")
-st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
+
+# ── Indicadores de % Planejada e Realizada ──────────────────────────────────
+_df_lake_pct = pd.read_csv(os.path.join(SCRIPT_DIR, 'datas_esperadas_por_lake.csv'), encoding='utf-8-sig')
+_df_lake_pct['data_fim'] = pd.to_datetime(_df_lake_pct['data_fim'], dayfirst=True, errors='coerce')
+_total_hist_pct = _df_lake_pct['id_historia'].nunique()
+
+# % planejada: histórias com data_fim <= hoje / total de histórias
+_hoje = pd.Timestamp(brt_time.date())
+_hist_planejadas_ate_hoje = (_df_lake_pct['data_fim'] <= _hoje).sum()
+_pct_planejada = (_hist_planejadas_ate_hoje / _total_hist_pct * 100) if _total_hist_pct > 0 else 0.0
+
+# % realizada: subtarefas Done / total subtarefas (dados já carregados após filtro)
+_df_pct = pd.read_csv(os.path.join(SCRIPT_DIR, 'FASE_3.csv'), encoding='utf-8-sig')
+_status_done = {'done', 'closed', 'resolved', 'concluído', 'concluida', 'canceled', 'cancelled'}
+_total_sub = len(_df_pct)
+_done_sub = _df_pct['Status'].astype(str).str.strip().str.lower().isin(_status_done).sum()
+_pct_realizada = (_done_sub / _total_sub * 100) if _total_sub > 0 else 0.0
+
+_col_p, _col_r = st.columns(2)
+with _col_p:
+    st.metric("📊 Porcentagem Planejada (hoje)", f"{_pct_planejada:.1f}%",
+              help="Percentual esperado de conclusão hoje segundo a curva de aprendizado (sigmoide)")
+with _col_r:
+    _delta_pct = _pct_realizada - _pct_planejada
+    st.metric("✅ Porcentagem Realizada (hoje)", f"{_pct_realizada:.1f}%",
+              delta=f"{_delta_pct:+.1f}% vs planejado",
+              delta_color="normal" if _delta_pct <= 0 else "inverse",
+              help="Percentual de subtarefas concluídas (Done/Canceled) sobre o total")
+
+st.markdown(hr_style, unsafe_allow_html=True)
 
 # Função para carregar dados
 def carregar_dados(arquivo):
@@ -286,30 +346,6 @@ try:
 except Exception as e:
     issues_abertos_1_semana = 0
     df_criticos = pd.DataFrame()  # DataFrame vazio em caso de erro
-
-# =====================
-# Função de curva sigmoide para entrega esperada (curva de aprendizado)
-# =====================
-def calcular_curva_aprendizado(data_inicio, data_fim, total, inflexao=0.4, inclinacao=8):
-    """
-    Gera pontos de uma curva sigmoide representando a curva de aprendizado do time.
-    - inflexao: fração do período onde o ritmo acelera (0.4 = 40% do período)
-    - inclinacao: quão abrupta é a transição (k=8 gera curva suave mas perceptível)
-    Fórmula: total / (1 + e^(-k * (t - t_meio)))
-    Normalizada para iniciar em 0 e terminar em total.
-    """
-    if pd.isna(data_inicio) or pd.isna(data_fim) or total <= 0:
-        return [], []
-    datas = pd.date_range(start=data_inicio, end=data_fim, freq='D')
-    n = len(datas)
-    if n < 2:
-        return [data_inicio, data_fim], [0, total]
-    t_meio = inflexao
-    k = inclinacao
-    valores_raw = [1 / (1 + np.exp(-k * (i / (n - 1) - t_meio))) for i in range(n)]
-    v_min, v_max = valores_raw[0], valores_raw[-1]
-    valores_norm = [total * (v - v_min) / (v_max - v_min) for v in valores_raw]
-    return list(datas), valores_norm
 
 # =====================
 # Gráfico de Burn-out semanal (Planejado vs Real)
@@ -482,195 +518,8 @@ if not dados_real.empty and dados_real['realizado_parcial_acum'].iloc[-1] > 0 an
         datas_proj_melhor, valores_proj_melhor = gerar_projecao(ritmo_melhor, prazo_final_planejado)
         datas_proj_pior, valores_proj_pior = gerar_projecao(ritmo_pior, prazo_final_planejado)
 
-st.subheader('Burn-out (Planejado x Real)')
-fig_burn = go.Figure()
-fig_burn.add_trace(go.Scatter(
-    x=burn['data'],
-    y=burn['planejado_acum'],
-    mode='lines+markers',
-    name='Planejado',
-    line=dict(color='royalblue')
-))
-fig_burn.add_trace(go.Scatter(
-    x=burn.loc[burn_real_parcial_mask, 'data'],
-    y=burn.loc[burn_real_parcial_mask, 'realizado_parcial_acum'],
-    mode='lines+markers',
-    name='Realizado',
-    line=dict(color='orange')
-))
-
-# Linha de entrega esperada com curva de aprendizado (sigmoide)
-_data_ini_burnout = burn['data'].min() if not burn.empty else pd.NaT
-_datas_sig, _valores_sig = calcular_curva_aprendizado(_data_ini_burnout, prazo_final_planejado, total_planejado)
-if len(_datas_sig) > 1:
-    fig_burn.add_trace(go.Scatter(
-        x=_datas_sig, y=_valores_sig,
-        mode='lines', name='Entrega Esperada',
-        line=dict(color='mediumpurple', dash='dash', width=2),
-        opacity=0.8
-    ))
-
-# Adiciona linha de melhor cenário
-if len(datas_proj_melhor) > 1:
-    fig_burn.add_trace(go.Scatter(
-        x=datas_proj_melhor,
-        y=valores_proj_melhor,
-        mode='lines',
-        name='Projeção (Melhor)',
-        line=dict(color='green', dash='dash', width=2),
-        opacity=0.6
-    ))
-
-# Adiciona linha de projeção atual
-if len(datas_proj) > 1:
-    fig_burn.add_trace(go.Scatter(
-        x=datas_proj,
-        y=valores_proj,
-        mode='lines+markers',
-        name='Projeção (Atual)',
-        line=dict(color='red', dash='dot', width=2)
-    ))
-
-# Adiciona linha de pior cenário
-if len(datas_proj_pior) > 1:
-    fig_burn.add_trace(go.Scatter(
-        x=datas_proj_pior,
-        y=valores_proj_pior,
-        mode='lines',
-        name='Projeção (Pior)',
-        line=dict(color='darkred', dash='dash', width=2),
-        opacity=0.6
-    ))
-
-# Define o range do eixo X para não ultrapassar a data final planejada
-if pd.notna(prazo_final_planejado):
-    data_inicio_grafico = burn['data'].min() if not burn.empty else prazo_final_planejado
-    xaxis_range = [data_inicio_grafico, prazo_final_planejado]
-else:
-    xaxis_range = None
-
-fig_burn.update_layout(
-    xaxis_title='Data',
-    yaxis_title='Historias acumuladas',
-    legend_title='Legenda',
-    height=450,
-    template=plotly_template,
-    paper_bgcolor=plotly_paper_bgcolor,
-    plot_bgcolor=plotly_plot_bgcolor,
-    font=dict(color=plotly_font_color),
-    xaxis=dict(tickformat='%d/%m/%Y', range=xaxis_range, **plotly_axis_style),
-    yaxis=dict(**plotly_axis_style),
-    legend=dict(font=dict(color=plotly_font_color))
-)
-st.plotly_chart(fig_burn, use_container_width=True)
-
-with st.expander("ℹ️ Como são calculadas as linhas deste gráfico?"):
-    st.markdown("""
-**Planejado**
-Soma cumulativa de histórias por `data_fim` prevista no arquivo de datas esperadas por lake.
-
-**Realizado**
-Cada subtarefa concluída (`Done`, `Canceled`, etc.) contribui com uma fração da sua história (1 / total de subtarefas da história). A linha representa o progresso parcial acumulado dia a dia.
-
-**Entrega Esperada** *(curva roxa tracejada)*
-Curva sigmoide que simula a curva de aprendizado do time:
-```
-f(t) = total / (1 + e^(-k × (t − t_meio)))   normalizada para [0, total]
-```
-- `t` = posição no período (0 = início, 1 = fim)
-- `t_meio = 0.40` → o time atinge ritmo pleno em ~40% do período
-- `k = 8` → transição moderadamente abrupta
-
-**Projeção (Melhor / Atual / Pior)**
-Regressão linear sobre o realizado parcial acumulado. A partir do último ponto entregue:
-- **Melhor:** ritmo histórico × 1.3 (30% mais rápido)
-- **Atual:** ritmo histórico (coeficiente angular da regressão)
-- **Pior:** ritmo histórico × 0.7 (30% mais lento)
-
-Todas as projeções são limitadas à data final planejada.
-""")
-
-# Indicadores do burn-out
-col_burn1, col_burn2, col_burn3, col_burn4 = st.columns(4)
-
-total_historias = int(total_planejado)
-historias_concluidas = int(burn['realizado_acum'].max()) if not burn.empty else 0
-percentual_concluido_hist = (historias_concluidas / total_historias * 100) if total_historias > 0 else 0
-
-# Calcula as previsões de conclusão para os três cenários
-if not dados_real.empty and ritmo_hist_dia > 0 and realizado_atual < total_planejado:
-    historias_faltantes = total_planejado - realizado_atual
-    
-    # Cenário atual
-    dias_faltantes = int(np.ceil(historias_faltantes / ritmo_hist_dia))
-    previsao_conclusao = dados_real['data'].iloc[-1] + pd.Timedelta(days=dias_faltantes)
-    
-    # Melhor cenário
-    ritmo_melhor = ritmo_hist_dia * 1.3
-    dias_faltantes_melhor = int(np.ceil(historias_faltantes / ritmo_melhor))
-    previsao_melhor = dados_real['data'].iloc[-1] + pd.Timedelta(days=dias_faltantes_melhor)
-    
-    # Pior cenário
-    ritmo_pior = ritmo_hist_dia * 0.7
-    dias_faltantes_pior = int(np.ceil(historias_faltantes / ritmo_pior))
-    previsao_pior = dados_real['data'].iloc[-1] + pd.Timedelta(days=dias_faltantes_pior)
-elif historias_concluidas >= total_historias:
-    # Se já concluiu tudo, usa a última data de entrega
-    previsao_conclusao = burn.loc[burn['realizado_acum'] >= total_historias, 'data'].min() if not burn.empty else pd.NaT
-    previsao_melhor = previsao_conclusao
-    previsao_pior = previsao_conclusao
-else:
-    previsao_conclusao = pd.NaT
-    previsao_melhor = pd.NaT
-    previsao_pior = pd.NaT
-
-with col_burn1:
-    st.metric(
-        label="Total de Histórias",
-        value=total_historias
-    )
-
-with col_burn2:
-    st.metric(
-        label="Histórias Concluídas",
-        value=historias_concluidas,
-        delta=f"{percentual_concluido_hist:.1f}%"
-    )
-
-with col_burn3:
-    prazo_planejado_txt = prazo_final_planejado.strftime('%d/%m/%Y') if pd.notna(prazo_final_planejado) else 'N/A'
-    st.metric(
-        label="Data Planejada",
-        value=prazo_planejado_txt
-    )
-
-with col_burn4:
-    # Mostra range de previsão (melhor a pior cenário)
-    if pd.notna(previsao_melhor) and pd.notna(previsao_pior):
-        previsao_melhor_txt = previsao_melhor.strftime('%d/%m')
-        previsao_pior_txt = previsao_pior.strftime('%d/%m/%y')
-        previsao_txt = f"{previsao_melhor_txt} a {previsao_pior_txt}"
-    else:
-        previsao_txt = 'N/A'
-    
-    # Calcula o delta em dias baseado no cenário atual
-    if pd.notna(previsao_conclusao) and pd.notna(prazo_final_planejado):
-        delta_dias = (previsao_conclusao - prazo_final_planejado).days
-        delta_txt = f"{delta_dias:+d} dias"
-        delta_color = "normal" if delta_dias >= 0 else "inverse"
-    else:
-        delta_txt = None
-        delta_color = "off"
-    
-    st.metric(
-        label="Previsão (Melhor/Pior)",
-        value=previsao_txt,
-        delta=delta_txt,
-        delta_color=delta_color
-    )
-
 # ── BURN-UP POR PONTOS ────────────────────────────────────────────────────────
-st.subheader('Burn-up por Pontos (Planejado x Real)')
+st.subheader('Burnup por Storypoint (Planejado x Real)')
 
 # Mapa de pontos por tamanho
 _pontos_tamanho = {'P': 3, 'M': 5, 'G': 8}
@@ -779,7 +628,6 @@ if not burn_bp_real.empty and pontos_entregues > 0 and pd.notna(prazo_burnup) an
         for i in range(dias + 1):
             d = ultima_data_bp + pd.Timedelta(days=i)
             if pd.notna(prazo) and d >= prazo:
-                # Adiciona ponto final exatamente na data limite
                 datas.append(prazo)
                 valores.append(min(pontos_entregues + ritmo * i, total_pontos))
                 break
@@ -796,7 +644,6 @@ if not burn_bp_real.empty and pontos_entregues > 0 and pd.notna(prazo_burnup) an
 
 fig_burnup = go.Figure()
 
-# Planejado
 if len(datas_plan_bp) > 0:
     fig_burnup.add_trace(go.Scatter(
         x=list(datas_plan_bp), y=valores_plan_bp,
@@ -804,7 +651,6 @@ if len(datas_plan_bp) > 0:
         line=dict(color='royalblue')
     ))
 
-# Realizado
 if not burn_bp_real.empty:
     fig_burnup.add_trace(go.Scatter(
         x=burn_bp_real['data'], y=burn_bp_real['pontos_acum'],
@@ -812,7 +658,6 @@ if not burn_bp_real.empty:
         line=dict(color='orange')
     ))
 
-# Linha de entrega esperada com curva de aprendizado (sigmoide)
 _datas_sig_bp, _valores_sig_bp = calcular_curva_aprendizado(data_inicio_burnup, prazo_burnup, total_pontos)
 if len(_datas_sig_bp) > 1:
     fig_burnup.add_trace(go.Scatter(
@@ -822,7 +667,6 @@ if len(_datas_sig_bp) > 1:
         opacity=0.8
     ))
 
-# Projeções
 if len(datas_proj_bp_melhor) > 1:
     fig_burnup.add_trace(go.Scatter(
         x=datas_proj_bp_melhor, y=valores_proj_bp_melhor,
@@ -855,7 +699,7 @@ fig_burnup.update_layout(
     font=dict(color=plotly_font_color),
     xaxis=dict(tickformat='%d/%m/%Y', range=xaxis_range_bp, **plotly_axis_style),
     yaxis=dict(**plotly_axis_style),
-    legend=dict(font=dict(color=plotly_font_color))
+    legend=plotly_legend_style
 )
 st.plotly_chart(fig_burnup, use_container_width=True)
 
@@ -891,9 +735,9 @@ Todas as projeções são limitadas à data final planejada.
 # KPIs do burn-up por pontos
 col_bp1, col_bp2, col_bp3, col_bp4 = st.columns(4)
 with col_bp1:
-    st.metric("Total de Pontos", int(total_pontos))
+    st.metric("Total de Story-Points", int(total_pontos))
 with col_bp2:
-    st.metric("Pontos Entregues", int(pontos_entregues), delta=f"{(pontos_entregues/total_pontos*100):.1f}%" if total_pontos > 0 else None)
+    st.metric("Story-Points Entregues", int(pontos_entregues), delta=f"{(pontos_entregues/total_pontos*100):.1f}%" if total_pontos > 0 else None)
 with col_bp3:
     st.metric("Data Planejada", prazo_burnup.strftime('%d/%m/%Y') if pd.notna(prazo_burnup) else 'N/A')
 with col_bp4:
@@ -904,13 +748,169 @@ with col_bp4:
     else:
         st.metric("Previsão (Melhor/Pior)", 'N/A')
 
+st.subheader('Burnup por Histórias (Planejado x Real)')
+fig_burn = go.Figure()
+fig_burn.add_trace(go.Scatter(
+    x=burn['data'],
+    y=burn['planejado_acum'],
+    mode='lines+markers',
+    name='Planejado',
+    line=dict(color='royalblue')
+))
+fig_burn.add_trace(go.Scatter(
+    x=burn.loc[burn_real_parcial_mask, 'data'],
+    y=burn.loc[burn_real_parcial_mask, 'realizado_parcial_acum'],
+    mode='lines+markers',
+    name='Realizado',
+    line=dict(color='orange')
+))
+
+_data_ini_burnout = burn['data'].min() if not burn.empty else pd.NaT
+_datas_sig, _valores_sig = calcular_curva_aprendizado(_data_ini_burnout, prazo_final_planejado, total_planejado)
+if len(_datas_sig) > 1:
+    fig_burn.add_trace(go.Scatter(
+        x=_datas_sig, y=_valores_sig,
+        mode='lines', name='Entrega Esperada',
+        line=dict(color='mediumpurple', dash='dash', width=2),
+        opacity=0.8
+    ))
+
+if len(datas_proj_melhor) > 1:
+    fig_burn.add_trace(go.Scatter(
+        x=datas_proj_melhor,
+        y=valores_proj_melhor,
+        mode='lines',
+        name='Projeção (Melhor)',
+        line=dict(color='green', dash='dash', width=2),
+        opacity=0.6
+    ))
+
+if len(datas_proj) > 1:
+    fig_burn.add_trace(go.Scatter(
+        x=datas_proj,
+        y=valores_proj,
+        mode='lines+markers',
+        name='Projeção (Atual)',
+        line=dict(color='red', dash='dot', width=2)
+    ))
+
+if len(datas_proj_pior) > 1:
+    fig_burn.add_trace(go.Scatter(
+        x=datas_proj_pior,
+        y=valores_proj_pior,
+        mode='lines',
+        name='Projeção (Pior)',
+        line=dict(color='darkred', dash='dash', width=2),
+        opacity=0.6
+    ))
+
+if pd.notna(prazo_final_planejado):
+    data_inicio_grafico = burn['data'].min() if not burn.empty else prazo_final_planejado
+    xaxis_range = [data_inicio_grafico, prazo_final_planejado]
+else:
+    xaxis_range = None
+
+fig_burn.update_layout(
+    xaxis_title='Data',
+    yaxis_title='Historias acumuladas',
+    legend_title='Legenda',
+    height=450,
+    template=plotly_template,
+    paper_bgcolor=plotly_paper_bgcolor,
+    plot_bgcolor=plotly_plot_bgcolor,
+    font=dict(color=plotly_font_color),
+    xaxis=dict(tickformat='%d/%m/%Y', range=xaxis_range, **plotly_axis_style),
+    yaxis=dict(**plotly_axis_style),
+    legend=plotly_legend_style
+)
+st.plotly_chart(fig_burn, use_container_width=True)
+
+with st.expander("ℹ️ Como são calculadas as linhas deste gráfico?"):
+    st.markdown("""
+**Planejado**
+Soma cumulativa de histórias por `data_fim` prevista no arquivo de datas esperadas por lake.
+
+**Realizado**
+Cada subtarefa concluída (`Done`, `Canceled`, etc.) contribui com uma fração da sua história (1 / total de subtarefas da história). A linha representa o progresso parcial acumulado dia a dia.
+
+**Entrega Esperada** *(curva roxa tracejada)*
+Curva sigmoide que simula a curva de aprendizado do time:
+```
+f(t) = total / (1 + e^(-k × (t − t_meio)))   normalizada para [0, total]
+```
+- `t` = posição no período (0 = início, 1 = fim)
+- `t_meio = 0.40` → o time atinge ritmo pleno em ~40% do período
+- `k = 8` → transição moderadamente abrupta
+
+**Projeção (Melhor / Atual / Pior)**
+Regressão linear sobre o realizado parcial acumulado. A partir do último ponto entregue:
+- **Melhor:** ritmo histórico × 1.3 (30% mais rápido)
+- **Atual:** ritmo histórico (coeficiente angular da regressão)
+- **Pior:** ritmo histórico × 0.7 (30% mais lento)
+
+Todas as projeções são limitadas à data final planejada.
+""")
+
+# Indicadores do burn-out
+col_burn1, col_burn2, col_burn3, col_burn4 = st.columns(4)
+
+total_historias = int(total_planejado)
+historias_concluidas = int(burn['realizado_acum'].max()) if not burn.empty else 0
+percentual_concluido_hist = (historias_concluidas / total_historias * 100) if total_historias > 0 else 0
+
+if not dados_real.empty and ritmo_hist_dia > 0 and realizado_atual < total_planejado:
+    historias_faltantes = total_planejado - realizado_atual
+    dias_faltantes = int(np.ceil(historias_faltantes / ritmo_hist_dia))
+    previsao_conclusao = dados_real['data'].iloc[-1] + pd.Timedelta(days=dias_faltantes)
+    ritmo_melhor = ritmo_hist_dia * 1.3
+    dias_faltantes_melhor = int(np.ceil(historias_faltantes / ritmo_melhor))
+    previsao_melhor = dados_real['data'].iloc[-1] + pd.Timedelta(days=dias_faltantes_melhor)
+    ritmo_pior = ritmo_hist_dia * 0.7
+    dias_faltantes_pior = int(np.ceil(historias_faltantes / ritmo_pior))
+    previsao_pior = dados_real['data'].iloc[-1] + pd.Timedelta(days=dias_faltantes_pior)
+elif historias_concluidas >= total_historias:
+    previsao_conclusao = burn.loc[burn['realizado_acum'] >= total_historias, 'data'].min() if not burn.empty else pd.NaT
+    previsao_melhor = previsao_conclusao
+    previsao_pior = previsao_conclusao
+else:
+    previsao_conclusao = pd.NaT
+    previsao_melhor = pd.NaT
+    previsao_pior = pd.NaT
+
+with col_burn1:
+    st.metric(label="Total de Histórias", value=total_historias)
+
+with col_burn2:
+    st.metric(label="Histórias Concluídas", value=historias_concluidas, delta=f"{percentual_concluido_hist:.1f}%")
+
+with col_burn3:
+    prazo_planejado_txt = prazo_final_planejado.strftime('%d/%m/%Y') if pd.notna(prazo_final_planejado) else 'N/A'
+    st.metric(label="Data Planejada", value=prazo_planejado_txt)
+
+with col_burn4:
+    if pd.notna(previsao_melhor) and pd.notna(previsao_pior):
+        previsao_melhor_txt = previsao_melhor.strftime('%d/%m')
+        previsao_pior_txt = previsao_pior.strftime('%d/%m/%y')
+        previsao_txt = f"{previsao_melhor_txt} a {previsao_pior_txt}"
+    else:
+        previsao_txt = 'N/A'
+    if pd.notna(previsao_conclusao) and pd.notna(prazo_final_planejado):
+        delta_dias = (previsao_conclusao - prazo_final_planejado).days
+        delta_txt = f"{delta_dias:+d} dias"
+        delta_color = "normal" if delta_dias >= 0 else "inverse"
+    else:
+        delta_txt = None
+        delta_color = "off"
+    st.metric(label="Previsão (Melhor/Pior)", value=previsao_txt, delta=delta_txt, delta_color=delta_color)
+
 # KPIs principais
-st.subheader("Indicadores Principais")
+st.markdown(hr_style, unsafe_allow_html=True)
+st.subheader("Indicadores Principais Subtarefas")
 col1, col1b, col2, col3, col4, col5 = st.columns(6)
 
 with col1:
     st.metric(
-        label="Total",
+        label="Total Subtarefas",
         value=total_subtarefas
     )
 
@@ -973,7 +973,8 @@ with col_graf1:
         height=300,
         template=plotly_template,
         paper_bgcolor=plotly_paper_bgcolor,
-        font=dict(color=plotly_font_color)
+        font=dict(color=plotly_font_color),
+        legend=plotly_legend_style
     )
     st.plotly_chart(fig_status, use_container_width=True)
 
@@ -1036,7 +1037,8 @@ with col_graf3:
         plot_bgcolor=plotly_plot_bgcolor,
         font=dict(color=plotly_font_color),
         xaxis=dict(**plotly_axis_style),
-        yaxis=dict(**plotly_axis_style)
+        yaxis=dict(**plotly_axis_style),
+        coloraxis_colorbar=dict(tickfont=dict(color=plotly_font_color), title=dict(font=dict(color=plotly_font_color)))
     )
     st.plotly_chart(fig_categoria, use_container_width=True)
 
@@ -1061,11 +1063,12 @@ with col_graf4:
         plot_bgcolor=plotly_plot_bgcolor,
         font=dict(color=plotly_font_color),
         xaxis=dict(**plotly_axis_style),
-        yaxis=dict(**plotly_axis_style)
+        yaxis=dict(**plotly_axis_style),
+        coloraxis_colorbar=dict(tickfont=dict(color=plotly_font_color), title=dict(font=dict(color=plotly_font_color)))
     )
     st.plotly_chart(fig_data_lake, use_container_width=True)
 
-st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
+st.markdown(hr_style, unsafe_allow_html=True)
 
 # Detalhes de Issues Críticos Abertos há mais de 1 Semana
 st.subheader("Criticos Abertos > 1 Semana")
@@ -1136,7 +1139,7 @@ if issues_abertos_1_semana > 0 and not df_criticos.empty:
 else:
     st.success("Nenhum issue critico aberto ha mais de 1 semana!")
 
-st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
+st.markdown(hr_style, unsafe_allow_html=True)
 
 # Tabela de detalhes
 st.subheader("Detalhes")
@@ -1203,7 +1206,7 @@ else:
     renderizar_tabela(df_filtrado[colunas_resumo].sort_index(ascending=False), tema_selecionado)
 
 # Estatísticas adicionais
-st.markdown("<hr style='margin: 10px 0;'/>", unsafe_allow_html=True)
+st.markdown(hr_style, unsafe_allow_html=True)
 st.subheader("Adicionais")
 
 col_stat1, col_stat2 = st.columns(2)
